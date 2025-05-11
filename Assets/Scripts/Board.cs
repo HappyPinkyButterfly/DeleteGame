@@ -50,15 +50,21 @@ public class Board : MonoBehaviour
     public Delete deletePrefab;
 
     private CellForPrefab[] cells;
+    private Row[] rows;
 
     public void Start()
     {
+        rows = GetComponentsInChildren<Row>();
         cells = GetComponentsInChildren<CellForPrefab>();
-        foreach(CellForPrefab cell in cells)
+        for( int y = 0; y < rows.Length; y++ )
         {
-            Cell newCell = Instantiate(cellPrefab, cell.transform.position, Quaternion.identity);
-            newCell.transform.SetParent(cell.transform);
-            newCell.location = cell.location; 
+          for(int x=0;x < rows[y].cells.Length; x++)
+          {
+            rows[y].cells[x].location = new Vector2Int(x,y);
+            Cell newCell = Instantiate(cellPrefab,transform);
+            newCell.transform.position = rows[y].cells[x].transform.position;
+            newCell.location = rows[y].cells[x].location;
+          }
         }
     }
 

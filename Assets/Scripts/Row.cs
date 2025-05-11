@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class Row : MonoBehaviour
 {
-    public Cell[] cells {get; set;}
+    public CellForPrefab[] cells {get; set;}
 
     private void Awake()
     {
-        cells = GetComponentsInChildren<Cell>();   
+        cells = GetComponentsInChildren<CellForPrefab>();   
     }
 }

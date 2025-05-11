@@ -11,10 +11,9 @@ public class Field : MonoBehaviour
 
   public Board board;
 
-  private Cell[] cells {get; set;}
-  private Row[] rows {get;set;}
-
-  private bool boardReady = false;  
+  private CellForPrefab[] cells {get; set;}
+  public Row[] rows {get;set;}
+ 
     private void Awake()
     {
       basicSymbol = new List<Sprite>(2);
@@ -22,11 +21,16 @@ public class Field : MonoBehaviour
       buttons = GetComponentsInChildren<Button>();
 
       rows = GetComponentsInChildren<Row>();
-      cells = GetComponentsInChildren<Cell>();
+      cells = GetComponentsInChildren<CellForPrefab>();
 
     }
 
     private void Start()
+    {
+      
+    }
+
+    public void DetermineLocationForCells()
     {
         for( int y = 0; y < rows.Length; y++ )
         {
@@ -39,16 +43,17 @@ public class Field : MonoBehaviour
 
     public bool EnemyHasNormalSymbol()
     {
-      for( int y = 0; y < rows.Length; y++ )
-        {
-          for(int x=0;x < rows[y].cells.Length; x++)
-          {
-            if (rows[y].cells[x].state.occupation == 1 && rows[y].cells[x].state.symbolOwner != board.turnPlayer)
-            {
-              return true;
-            }
-          }
-        }
-      return false;
+      // for( int y = 0; y < rows.Length; y++ )
+      //   {
+      //     for(int x=0;x < rows[y].cells.Length; x++)
+      //     {
+      //       if (rows[y].cells[x].state.occupation == 1 && rows[y].cells[x].state.symbolOwner != board.turnPlayer)
+      //       {
+      //         return true;
+      //       }
+      //     }
+      //   }
+      // return false;
+      return true;
     }
 }

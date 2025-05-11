@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Cell : MonoBehaviour
 {
 
-   public Board board;
+   private Board board;
 
    public CellState state {get; private set;}
 
@@ -16,6 +16,7 @@ public class Cell : MonoBehaviour
 
     public void Awake()
     {
+        board = FindFirstObjectByType<Board>();
         buttonImage = GetComponent<Image>();
         buttonImage.sprite = board.emptyCell;
         state = gameObject.AddComponent<CellState>();
