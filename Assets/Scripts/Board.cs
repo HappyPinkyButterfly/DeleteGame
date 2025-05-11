@@ -45,6 +45,23 @@ public class Board : MonoBehaviour
 
     public Field field;
 
+    public Cell cellPrefab;
+
+    public Delete deletePrefab;
+
+    private CellForPrefab[] cells;
+
+    public void Start()
+    {
+        cells = GetComponentsInChildren<CellForPrefab>();
+        foreach(CellForPrefab cell in cells)
+        {
+            Cell newCell = Instantiate(cellPrefab, cell.transform.position, Quaternion.identity);
+            newCell.transform.SetParent(cell.transform);
+            newCell.location = cell.location; 
+        }
+    }
+
     public bool CheckForConnection()
     {
         Vector2Int pos1 = connectionTable[0].location;
