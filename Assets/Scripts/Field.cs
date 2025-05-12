@@ -25,35 +25,5 @@ public class Field : MonoBehaviour
 
     }
 
-    private void Start()
-    {
-      
-    }
-
-    public void DetermineLocationForCells()
-    {
-        for( int y = 0; y < rows.Length; y++ )
-        {
-          for(int x=0;x < rows[y].cells.Length; x++)
-          {
-            rows[y].cells[x].location = new Vector2Int(x,y);
-          }
-        }
-    }
-
-    public bool EnemyHasNormalSymbol()
-    {
-      // for( int y = 0; y < rows.Length; y++ )
-      //   {
-      //     for(int x=0;x < rows[y].cells.Length; x++)
-      //     {
-      //       if (rows[y].cells[x].state.occupation == 1 && rows[y].cells[x].state.symbolOwner != board.turnPlayer)
-      //       {
-      //         return true;
-      //       }
-      //     }
-      //   }
-      // return false;
-      return true;
-    }
+    
 }

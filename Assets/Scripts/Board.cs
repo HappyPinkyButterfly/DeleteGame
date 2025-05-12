@@ -188,6 +188,18 @@ public class Board : MonoBehaviour
             botScoreBoard.ResetPoints();
     }
 
+    public bool EnemyHasNormalSymbol()
+    {
+        Cell[] allCells = FindObjectsByType<Cell>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Cell cell in allCells)
+        {
+            if (cell.state.occupation == 1 && cell.state.symbolOwner != turnPlayer)
+            {
+              return true;
+            }
+        }
+      return false;
+    }
    
 }
 

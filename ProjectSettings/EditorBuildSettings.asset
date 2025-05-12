@@ -18,6 +18,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Lobby.unity
     guid: 70a2943d1aea76542b928ba066a9d4f8
   - enabled: 1
+    path: Assets/Scenes/RulesPage.unity
+    guid: 328aa69389fb21748afbf6a944732b5c
+  - enabled: 1
+    path: Assets/Scenes/LoadToGame.unity
+    guid: c263bc77f4dc3c748b4d7c47cbcd3e19
+  - enabled: 1
     path: Assets/Scenes/Loading.unity
     guid: c23a2c97eb660fc418e3a196083272e9
   m_configObjects:

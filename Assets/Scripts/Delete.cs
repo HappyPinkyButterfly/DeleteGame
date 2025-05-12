@@ -39,7 +39,7 @@ public class Delete : MonoBehaviour
         && !deleteUsed
         && !board.topFirstMove
         && !board.botFirstMove
-        && board.field.EnemyHasNormalSymbol())
+        && board.EnemyHasNormalSymbol())
         {
         board.deleteProccess = true;
         deleteButtonImage.sprite = board.emptyCell;

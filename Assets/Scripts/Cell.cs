@@ -8,7 +8,7 @@ public class Cell : MonoBehaviour
 
    private Board board;
 
-   public CellState state {get; private set;}
+   public CellState state {get;  set;}
 
    public Button button;
    public Image buttonImage{get;set;}
