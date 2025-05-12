@@ -161,7 +161,7 @@ public class Board : MonoBehaviour
 
         disable = false;
         turnPlayer = true;
-        topFirstMove = true;
+        topFirstMove = false;
         botFirstMove = true;
         connectionTable.Clear();
         deleteProccess = false;
