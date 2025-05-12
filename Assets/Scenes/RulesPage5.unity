@@ -892,38 +892,43 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Strategic Symbol Placement & Origin Mechanics
-
-    Initial Placement
-    Rules:
-
-    
-
-    The second player''s first-placed symbol becomes an indestructible
-    Origin Symbol
-
-    
-
-    The first player''s initial symbol remains a basic
-    (vulnerable) symbol for balance
+  m_text: 'Initial Placement Rules:
 
 
-    Terrain Creation:
+    The second player''s first-placed symbol
+    becomes an indestructible Origin Symbol
 
-    
 
-    Upon connection,
-    affected cells become permanent terrain
+    The first player''s initial symbol
+    remains a basic symbol for balance
 
-    
 
-    Terrain blocks all future
-    symbol placement
+    Terrain blocks all future symbol placement
 
-    
 
-    Creates evolving board geography that influences
-    all subsequent moves'
+    Creates
+    evolving board geography that influences all subsequent moves
+
+
+    End of Game
+    Condition - Full Board
+
+    If all cells on the board are occupied by terrain,
+    basic symbols, or origin symbols, the game immediately ends.
+
+
+    Determining
+    the Winner:
+
+
+    The player with the highest number of victory points wins.
+
+    If
+    players are tied in victory points, the game ends in a draw.
+
+
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

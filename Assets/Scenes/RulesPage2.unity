@@ -1164,7 +1164,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Core Gameplay Actions:\n\n1. Placing a Basic Symbol\r\nOn your turn, place
-    your basic symbol (X or O) on any empty, non-terrain cell.\r\n\r\nProperties:\r\n\r\nBasic
+    your basic symbol on any empty, non-terrain cell.\r\n\r\nProperties:\r\n\r\nBasic
     symbols are vulnerable to your opponent\u2019s Delete action.\r\n\r\nThey serve
     as the foundation for forming connections.\r\n\r\n\n"
   m_isRightToLeft: 0

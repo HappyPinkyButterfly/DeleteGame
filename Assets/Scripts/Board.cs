@@ -54,6 +54,10 @@ public class Board : MonoBehaviour
 
     public Material material;
 
+    public int cellsInUse = 0;
+
+    public Sprite draw;
+
 
     public void Start()
     {
@@ -67,10 +71,12 @@ public class Board : MonoBehaviour
             Cell newCell = Instantiate(cellPrefab,rows[y].cells[x].transform);
             newCell.transform.position = rows[y].cells[x].transform.position;
             newCell.location = rows[y].cells[x].location;
+
           }
         }
     }
 
+    
     public bool CheckForConnection()
     {
         Vector2Int pos1 = connectionTable[0].location;
@@ -165,6 +171,7 @@ public class Board : MonoBehaviour
         botFirstMove = true;
         connectionTable.Clear();
         deleteProccess = false;
+        cellsInUse = 0;
 
         // Resetiraj vse celice
         Cell[] allCells = FindObjectsByType<Cell>(FindObjectsInactive.Include, FindObjectsSortMode.None);

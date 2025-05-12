@@ -37,6 +37,7 @@ public class Cell : MonoBehaviour
                     state.occupation = 2;
                     board.topFirstMove = false;
                     board.turnPlayer = !board.turnPlayer;
+                    board.cellsInUse++;
                     return;
                 }
                 else if (!board.turnPlayer && board.botFirstMove)
@@ -46,6 +47,7 @@ public class Cell : MonoBehaviour
                     state.occupation = 2;
                     board.botFirstMove = false;
                     board.turnPlayer = !board.turnPlayer;
+                    board.cellsInUse++;
                 
                     return;
                 }
@@ -63,6 +65,8 @@ public class Cell : MonoBehaviour
                 }
                 state.occupation = 1;
                 board.turnPlayer = !board.turnPlayer;
+                board.cellsInUse++;
+                Debug.Log("Stevilo celic v uporabi: " + board.cellsInUse );
             }
             else if ((state.occupation == 1 || state.occupation == 2) && board.turnPlayer == state.symbolOwner)
             {

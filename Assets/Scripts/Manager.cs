@@ -23,7 +23,6 @@ public class Manager : MonoBehaviour
         gameOverScreen.blocksRaycasts = false;
         board.ResetGame();
         board.enabled = true;
-        Debug.Log("New Game clicked - reset starting");
     }
 
     private void Update()
@@ -32,6 +31,26 @@ public class Manager : MonoBehaviour
             GameOver(true);
         else if (board.botScoreBoard.victoryPoints == pointsToWin)
             GameOver(false);
+        if(board.cellsInUse == 64)
+        {
+          if(board.botScoreBoard.victoryPoints < board.topScoreBoard.victoryPoints)
+          {
+            GameOver(true);
+          }
+          else if(board.botScoreBoard.victoryPoints > board.topScoreBoard.victoryPoints)
+          {
+            GameOver(false);
+          }
+          else
+          {
+            board.enabled = false;
+            gameOverScreen.alpha = 1f;
+            gameOverScreen.interactable = true;
+            gameOverScreen.blocksRaycasts = true;
+            victoryImage.sprite = board.draw;
+          }
+        }
+
     }
 
     public void GameOver(bool player1Wins)
