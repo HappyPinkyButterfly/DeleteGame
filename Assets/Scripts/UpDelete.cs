@@ -2,13 +2,20 @@ using UnityEngine;
 
 public class UpDelete : MonoBehaviour
 {
+    public DeleteForPrefab[] deleteCells{get;set;}
     public Delete[] upDeletesAvailable;
     public Board board;
 
     private void Awake()
     {
+        deleteCells = GetComponentsInChildren<DeleteForPrefab>();
+        foreach(DeleteForPrefab deleteCell in deleteCells)
+        {
+            Delete delete = Instantiate(board.deletePrefab,deleteCell.transform);
+            delete.transform.position = deleteCell.transform.position;
+            
+        }
         upDeletesAvailable = GetComponentsInChildren<Delete>();
-        
     }
 
     public void getOneDeleteBack()
@@ -17,7 +24,7 @@ public class UpDelete : MonoBehaviour
         {
            if(delete.deleteUsed)
            {
-            delete.deleteButtonImage.sprite = board.deleteOriginSymP2;
+            delete.deleteButtonImage.sprite = board.deleteOriginSymP1;
             delete.deleteButtonImage.color = Color.white;
             delete.deleteUsed = false;
             return;

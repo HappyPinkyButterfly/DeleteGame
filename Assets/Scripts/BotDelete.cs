@@ -2,22 +2,29 @@ using UnityEngine;
 
 public class BotDelete : MonoBehaviour
 {
-    public Delete[] botDeletesAvailable;
+    public DeleteForPrefab[] deleteCells{get;set;}
+    public Delete[] upDeletesAvailable;
     public Board board;
 
     private void Awake()
     {
-        botDeletesAvailable = GetComponentsInChildren<Delete>();
-        
+        deleteCells = GetComponentsInChildren<DeleteForPrefab>();
+        foreach(DeleteForPrefab deleteCell in deleteCells)
+        {
+            Delete delete = Instantiate(board.deletePrefab,deleteCell.transform);
+            delete.transform.position = deleteCell.transform.position;
+            
+        }
+        upDeletesAvailable = GetComponentsInChildren<Delete>();
     }
 
     public void getOneDeleteBack()
     {
-        foreach(Delete delete in botDeletesAvailable)
+        foreach(Delete delete in upDeletesAvailable)
         {
            if(delete.deleteUsed)
            {
-            delete.deleteButtonImage.sprite = board.deleteOriginSymP1;
+            delete.deleteButtonImage.sprite = board.deleteOriginSymP2;
             delete.deleteButtonImage.color = Color.white;
             delete.deleteUsed = false;
             return;
@@ -25,3 +32,4 @@ public class BotDelete : MonoBehaviour
         }
     }
 }
+

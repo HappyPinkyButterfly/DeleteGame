@@ -52,6 +52,9 @@ public class Board : MonoBehaviour
     private CellForPrefab[] cells;
     private Row[] rows;
 
+    public Material material;
+
+
     public void Start()
     {
         rows = GetComponentsInChildren<Row>();
@@ -61,7 +64,7 @@ public class Board : MonoBehaviour
           for(int x=0;x < rows[y].cells.Length; x++)
           {
             rows[y].cells[x].location = new Vector2Int(x,y);
-            Cell newCell = Instantiate(cellPrefab,transform);
+            Cell newCell = Instantiate(cellPrefab,rows[y].cells[x].transform);
             newCell.transform.position = rows[y].cells[x].transform.position;
             newCell.location = rows[y].cells[x].location;
           }

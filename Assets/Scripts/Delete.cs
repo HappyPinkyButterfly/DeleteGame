@@ -3,10 +3,8 @@ using UnityEngine.UI;
 
 public class Delete : MonoBehaviour
 {
-    public Board board;
+    private Board board;
     public Button deleteButton;
-
-
 
     public Image deleteButtonImage{get;set;}
 
@@ -18,10 +16,11 @@ public class Delete : MonoBehaviour
 
     private void Awake()
     {
+        board = GetComponentInParent<Board>();
         deleteTurnPlayer = false;
         deleteButton = GetComponent<Button>();
         deleteButtonImage = GetComponent<Image>();
-        isPlayerDown = transform.parent.name.Contains("UpDelete");
+        isPlayerDown = transform.parent.name.Contains("UpDeleteCell");
         if(!CheckParent())
         {
             deleteButtonImage.sprite = board.deleteOriginSymP1;
@@ -43,9 +42,9 @@ public class Delete : MonoBehaviour
         && board.field.EnemyHasNormalSymbol())
         {
         board.deleteProccess = true;
-        deleteButtonImage.sprite = board.cover;
-        ColorUtility.TryParseHtmlString("#DBC8AA", out Color novaBarva);
-        deleteButtonImage.color = novaBarva;
+        deleteButtonImage.sprite = board.emptyCell;
+        ColorUtility.TryParseHtmlString("#B5A891", out Color novaBarva);
+        deleteButtonImage.material = board.material;
         deleteUsed = true;
         }
 
@@ -72,6 +71,7 @@ public class Delete : MonoBehaviour
 {
     deleteUsed = false;
     deleteButtonImage.color = Color.white;
+    deleteButtonImage.material = null;
     
     // Ponastavi pravilen sprite glede na igralca
     if (!CheckParent()) // Za spodnjega igralca
