@@ -13,6 +13,7 @@ public class BotDelete : MonoBehaviour
         {
             Delete delete = Instantiate(board.deletePrefab,deleteCell.transform);
             delete.transform.position = deleteCell.transform.position;
+            delete.deleteButtonImage.material = board.material;
             
         }
         upDeletesAvailable = GetComponentsInChildren<Delete>();
