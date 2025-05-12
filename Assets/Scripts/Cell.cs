@@ -102,51 +102,25 @@ public class Cell : MonoBehaviour
             }
         }
         else if (state.occupation == 1 && board.turnPlayer != state.symbolOwner && board.connectionTable.Count == 0)
-    {
+        {
         // Brisanje nasprotnikovega znaka
         if (board.turnPlayer)
         {
             buttonImage.sprite = board.originSymP1;
-            // Ustavi utripanje prek UpDelete
-            if (board.upDelete != null)
-            {
-                foreach (Delete delete in board.upDelete.upDeletesAvailable)
-                {
-                    if (delete.deleteUsed)
-                    {
-                        //delete.StopCoroutine(delete.BlinkDeleteButton());
-                        delete.deleteUsed = false;
-                        delete.deleteButtonImage.sprite = board.deleteOriginSymP1;
-                        //delete.isBlinking = false;
-
-                        break; // Ustavi samo prvi uporabljeni gumb
-                    }
-                }
-            }
+            board.botDelete.HideUsedDelete();
+            
         }
         else
         {
             buttonImage.sprite = board.originSymP2;
-            // Ustavi utripanje prek BotDelete
-            if (board.botDelete != null)
-            {
-                foreach (Delete delete in board.botDelete.upDeletesAvailable)
-                {
-                    if (delete.deleteUsed)
-                    {
-                        //delete.StopCoroutine(delete.BlinkDeleteButton());
-                        delete.deleteUsed = false; // Dodaj to vrstico
-                        delete.deleteButtonImage.sprite = board.deleteOriginSymP2;
-                        //delete.isBlinking = false;
-                        break; // Ustavi samo prvi uporabljeni gumb
-                    }
-                }
-            }
+            board.upDelete.HideUsedDelete();
+            
         }
-            state.occupation = 2;
-            board.turnPlayer = !board.turnPlayer;
-            state.symbolOwner = !state.symbolOwner;
-            board.deleteProccess = false;
+        state.occupation = 2;
+        board.turnPlayer = !board.turnPlayer;
+        state.symbolOwner = !state.symbolOwner;
+        board.deleteProccess = false;
+            
         }
     }
     public void ResetCell()

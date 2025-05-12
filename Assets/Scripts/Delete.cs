@@ -14,6 +14,8 @@ public class Delete : MonoBehaviour
 
     public bool deleteUsed = false;
 
+    public bool isWaiting = false;
+
     private void Awake()
     {
         board = GetComponentInParent<Board>();
@@ -31,7 +33,7 @@ public class Delete : MonoBehaviour
         }
     }
     public void DeleteCell()
-    {
+    {   
         if(
         !isPlayerDown == board.turnPlayer 
         && board.connectionTable.Count == 0 
@@ -42,13 +44,9 @@ public class Delete : MonoBehaviour
         && board.EnemyHasNormalSymbol())
         {
         board.deleteProccess = true;
-        deleteButtonImage.sprite = board.emptyCell;
-        ColorUtility.TryParseHtmlString("#B5A891", out Color novaBarva);
-        deleteButtonImage.material = board.material;
         deleteUsed = true;
+        deleteButtonImage.color = new Color(1, 1, 1, 0.5f);
         }
-
-        
     }
 
 
@@ -83,4 +81,12 @@ public class Delete : MonoBehaviour
         deleteButtonImage.sprite = board.deleteOriginSymP2;
     }
 }
+
+    public void HideAfterUse()
+    {
+        deleteButtonImage.sprite = board.emptyCell;
+        deleteButtonImage.color = Color.clear; // Popolnoma prozorno
+    }
+
 }
+
