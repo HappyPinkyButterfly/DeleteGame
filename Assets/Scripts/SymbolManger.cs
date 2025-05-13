@@ -164,20 +164,40 @@ public class SymbolManger : MonoBehaviour
 
     public void PreviusSymbolSetTop()
     {
-        int x = 0;
-        while(x != 2)
+        if(indexTop - 1 != indexBot && indexTop - 1 > 0)
         {
-            if(indexTop -1 <= 0)
-            {
-                indexTop = spriteSetList.Count - 1;
-            }
-            if(indexBot == indexTop)
-            {
-                indexTop--;
-            }
-            x++;
+            indexTop--;
         }
-        
+        else if(
+        indexTop - 1 != indexBot &&
+        indexTop - 1 < 0 &&
+        indexTop - 1 + spriteSetList.Count != indexBot
+        )
+        {
+           indexTop = indexTop - 1 + spriteSetList.Count; 
+        }
+        else if(
+        indexTop - 1 != indexBot &&
+        indexTop - 1 < 0 &&
+        indexTop - 1 + spriteSetList.Count == indexBot
+        )
+        {
+            indexTop = indexTop - 2 + spriteSetList.Count; 
+        }
+        else if(
+            indexTop - 1 == indexBot && 
+            indexTop - 2 >= 0)
+        {
+            indexTop--;
+            indexTop--;
+        }
+        else if(
+        indexTop - 1 == indexBot &&
+        indexTop - 2 < 0)
+        {
+            indexTop = indexTop - 2 + spriteSetList.Count;
+        }
+
 
         topOrigin.sprite = spriteSetList[indexTop][2];
         topBasic.sprite = spriteSetList[indexTop][0];
@@ -190,19 +210,38 @@ public class SymbolManger : MonoBehaviour
 
     public void PreviousSymbolSetBot()
     {
-        int x = 0;
-        while(x != 2)
+        if(indexBot - 1 != indexTop && indexBot - 1 >= 0)
         {
-
-            if(indexBot - 1 <= 0)
-            {
-                indexBot = spriteSetList.Count - 1;
-            }
-            if(indexBot == indexTop)
-            {
-                indexBot--;
-            }
-            x++;
+            indexBot--;
+        }
+        else if(
+        indexBot - 1 != indexTop &&
+        indexBot - 1 < 0 &&
+        indexBot - 1 + spriteSetList.Count != indexTop
+        )
+        {
+           indexBot = indexBot - 1 + spriteSetList.Count; 
+        }
+        else if(
+        indexBot - 1 != indexTop &&
+        indexBot - 1 < 0 &&
+        indexBot - 1 + spriteSetList.Count == indexTop
+        )
+        {
+            indexBot = indexBot - 2 + spriteSetList.Count; 
+        }
+        else if(
+            indexBot - 1 == indexTop && 
+            indexBot - 2 >= 0)
+        {
+            indexBot--;
+            indexBot--;
+        }
+        else if(
+        indexBot - 1 == indexTop &&
+        indexBot - 2 < 0)
+        {
+            indexBot = indexBot - 2 + spriteSetList.Count;
         }
 
         botOrigin.sprite = spriteSetList[indexBot][2];
