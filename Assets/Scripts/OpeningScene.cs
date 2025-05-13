@@ -31,8 +31,6 @@ public class OpeningScene : MonoBehaviour {
 
         yield return StartCoroutine(FadeText(presentedBy, 0f, 1f, logoFadeInTime));
         yield return StartCoroutine(FadeCanvasGroup(logo, 0f, 1f, logoFadeInTime));
-
-        yield return new WaitForSeconds(logoFadeInTime);
         yield return StartCoroutine(FadeText(ticTacToeText, 0f, 1f, logoFadeInTime));
 
         yield return new WaitForSeconds(2.5f);

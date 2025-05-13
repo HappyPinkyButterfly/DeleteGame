@@ -15,9 +15,14 @@ public class TopTurn : MonoBehaviour
 
     public void Update()
     {
-        if(!board.turnPlayer)
+        if(!board.turnPlayer && !board.deleteProccess)
         {
-            imageTopTurn.color = Color.yellow;
+            imageTopTurn.color = Color.green;
+        }
+        else if (!board.turnPlayer && board.deleteProccess)
+        {
+
+           imageTopTurn.color = Color.yellow; 
         }
         else
         {

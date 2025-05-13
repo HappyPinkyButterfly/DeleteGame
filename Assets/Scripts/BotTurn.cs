@@ -14,9 +14,13 @@ public class BotTurn : MonoBehaviour
 
     public void Update()
     {
-        if(board.turnPlayer)
+        if(board.turnPlayer && !board.deleteProccess)
         {
-            imageBotTurn.color = Color.yellow;
+            imageBotTurn.color = Color.green;
+        }
+        else if (board.turnPlayer && board.deleteProccess)
+        {
+           imageBotTurn.color = Color.yellow; 
         }
         else
         {

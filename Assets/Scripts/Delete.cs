@@ -1,5 +1,7 @@
 using System.Collections;
+using Photon.Pun.UtilityScripts;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Delete : MonoBehaviour
@@ -44,9 +46,9 @@ public class Delete : MonoBehaviour
         && !board.botFirstMove
         && board.EnemyHasNormalSymbol())
         {
-        board.deleteProccess = true;
-        deleteUsed = true;
-        deleteButtonImage.color = new Color(1, 1, 1, 0.5f);
+            board.deleteProccess = true;
+            deleteUsed = true;
+            deleteButtonImage.color = new Color(1, 1, 1, 0);
         }
     }
 
@@ -83,24 +85,27 @@ public class Delete : MonoBehaviour
         }
     }
 
-    public void HideAfterUse()
-    {
-        StartCoroutine(HideAfterUseCoroutine());
-    }
+    // public void HideAfterUse()
+    // {
+    //     StartCoroutine(HideAfterUseCoroutine());
+    // }
 
-    private IEnumerator HideAfterUseCoroutine()
-{
-    // Wait until the delete process is complete
-    while (board.deleteProccess)
-    {
-        yield return null;
-    }
+    // private IEnumerator HideAfterUseCoroutine()
+    // {
+    // // Wait until the delete process is complete
+    // while (board.deleteProccess)
+    // {
+    //     yield return null;
+    // }
 
-    // Hide the delete button after the process is done
-    deleteButtonImage.sprite = board.emptyCell;
-    deleteButtonImage.color = Color.clear;
-    deleteUsed = true;
-}
+    // // Hide the delete button after the process is done
+    
+    // deleteButtonImage.sprite = board.emptyCell;
+    // deleteButtonImage.color = Color.clear;
+    // deleteUsed = true;
+    // EventSystem.current.SetSelectedGameObject(null);
+    
+    // }
 
 }
 

@@ -33,17 +33,17 @@ public class BotDelete : MonoBehaviour
            }
         }
     }
-    public void HideUsedDelete()
-    {
-        foreach (Delete delete in upDeletesAvailable)
-        {
-            if (delete.deleteUsed)
-            {
-                delete.HideAfterUse();
-                break;
-            }
-        }
-    }
+    // public void HideUsedDelete()
+    // {
+    //     foreach (Delete delete in upDeletesAvailable)
+    //     {
+    //         if (delete.deleteUsed)
+    //         {
+    //             delete.HideAfterUse();
+    //             break;
+    //         }
+    //     }
+    // }
 
 }
 

@@ -121,19 +121,18 @@ public class Cell : MonoBehaviour
             if (board.turnPlayer)
             {
                 buttonImage.sprite = board.originSymP1;
-                board.botDelete.HideUsedDelete();
+                //board.botDelete.HideUsedDelete();
             }
             else
             {
                 buttonImage.sprite = board.originSymP2;
-                board.upDelete.HideUsedDelete();
+                //board.upDelete.HideUsedDelete();
             }
             state.occupation = 2;
             board.turnPlayer = !board.turnPlayer;
             state.symbolOwner = !state.symbolOwner;
             board.deleteProccess = false;     
         }
-        EventSystem.current.SetSelectedGameObject(null);
     }
     
     public void ResetCell()

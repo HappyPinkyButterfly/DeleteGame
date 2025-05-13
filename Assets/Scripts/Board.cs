@@ -42,7 +42,6 @@ public class Board : MonoBehaviour
     public bool topFirstMove {get;set;}
     public bool botFirstMove {get;set;}
 
-    public bool disableBoard = false;
 
     public Field field;
 
@@ -58,6 +57,8 @@ public class Board : MonoBehaviour
     public int cellsInUse = 0;
 
     public Sprite draw;
+    public TopTurn topTurn;
+    public BotTurn botTurn;
 
 
     public void Start()
@@ -81,14 +82,14 @@ public class Board : MonoBehaviour
     {
         if (SymbolManger.Instance == null) return;
         
-        basicSymP1 = SymbolManger.spriteSetList[SymbolManger.Instance.indexTop][0];
-        basicSymP2 = SymbolManger.spriteSetList[SymbolManger.Instance.indexBot][0];
+        basicSymP2 = SymbolManger.spriteSetList[SymbolManger.Instance.indexTop][0];
+        basicSymP1 = SymbolManger.spriteSetList[SymbolManger.Instance.indexBot][0];
         
-        originSymP1 = SymbolManger.spriteSetList[SymbolManger.Instance.indexTop][2];
-        originSymP2 = SymbolManger.spriteSetList[SymbolManger.Instance.indexBot][2];
+        originSymP2 = SymbolManger.spriteSetList[SymbolManger.Instance.indexTop][2];
+        originSymP1 = SymbolManger.spriteSetList[SymbolManger.Instance.indexBot][2];
         
-        deleteOriginSymP1 = SymbolManger.spriteSetList[SymbolManger.Instance.indexTop][1];
-        deleteOriginSymP2 = SymbolManger.spriteSetList[SymbolManger.Instance.indexBot][1];
+        deleteOriginSymP2 = SymbolManger.spriteSetList[SymbolManger.Instance.indexTop][1];
+        deleteOriginSymP1 = SymbolManger.spriteSetList[SymbolManger.Instance.indexBot][1];
     }
 
     

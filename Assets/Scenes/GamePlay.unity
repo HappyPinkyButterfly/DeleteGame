@@ -3397,13 +3397,14 @@ MonoBehaviour:
   topScoreBoard: {fileID: 1780598251}
   botScoreBoard: {fileID: 745555719}
   cover: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  disableBoard: 1
   field: {fileID: 1108873535}
   cellPrefab: {fileID: 7212959812114250652, guid: cd09082058777184ab03b384c21689d1, type: 3}
   deletePrefab: {fileID: 6559683056416812064, guid: 9473aa774564b1d4eb3402c1b26888f1, type: 3}
   material: {fileID: 10758, guid: 0000000000000000f000000000000000, type: 0}
   cellsInUse: 0
   draw: {fileID: -2555591554857944400, guid: 894142e7b67110044be72fdef3c1c5b4, type: 3}
+  topTurn: {fileID: 1242209512}
+  botTurn: {fileID: 996359653}
 --- !u!1 &1780598247
 GameObject:
   m_ObjectHideFlags: 0

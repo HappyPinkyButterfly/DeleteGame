@@ -20,7 +20,7 @@ public class SymbolManger : MonoBehaviour
     public int indexTop = 0;
     public int indexBot = 1;
 
-    public static int numberOfSymbolSets = 3;
+    public static int numberOfSymbolSets = 4;
 
     private Sprite deleteTop {get;set;}
     private Sprite deleteBot {get;set;}
@@ -48,10 +48,6 @@ public class SymbolManger : MonoBehaviour
 
     private void Start()
     {
-        
-        Debug.Log(spriteSetList.Count);
-        Debug.Log("Zacetni top:  " + indexTop );
-        Debug.Log("Zacetni bot:  " + indexBot );
         deleteTop = spriteSetList[indexTop][1];
         deleteBot = spriteSetList[indexBot][1];
 
@@ -60,7 +56,6 @@ public class SymbolManger : MonoBehaviour
 
         topBasic.sprite = spriteSetList[indexTop][0];
         botBasic.sprite = spriteSetList[indexBot][0];
-        
     }
 
     public static void LoadSprites()
@@ -68,9 +63,7 @@ public class SymbolManger : MonoBehaviour
         for(int i = 0; i < numberOfSymbolSets; i++)
         {   
             Sprite[] sprites = Resources.LoadAll<Sprite>("Symbols/set" + i);
-            Debug.Log(sprites.Length);
             spriteSetList.Add(new List<Sprite>(sprites));
-            Debug.Log(spriteSetList.Count);
         }
     }
     
@@ -113,8 +106,6 @@ public class SymbolManger : MonoBehaviour
         topOrigin.sprite = spriteSetList[indexTop][2];
         topBasic.sprite = spriteSetList[indexTop][0];
         deleteTop = spriteSetList[indexTop][1];
-        Debug.Log("top:  " + indexTop );
-        Debug.Log("bot:  " + indexBot );
     }
 
     public void NextSymbolSetBot()
@@ -158,8 +149,6 @@ public class SymbolManger : MonoBehaviour
         botOrigin.sprite = spriteSetList[indexBot][2];
         botBasic.sprite = spriteSetList[indexBot][0];
         deleteBot = spriteSetList[indexBot][1];
-        Debug.Log("top:  " + indexTop );
-        Debug.Log("bot:  " + indexBot );
     }
 
     public void PreviusSymbolSetTop()
@@ -202,8 +191,6 @@ public class SymbolManger : MonoBehaviour
         topOrigin.sprite = spriteSetList[indexTop][2];
         topBasic.sprite = spriteSetList[indexTop][0];
         deleteTop = spriteSetList[indexTop][1];
-        Debug.Log("top:  " + indexTop );
-        Debug.Log("bot:  " + indexBot );
     }
 
     
@@ -247,7 +234,5 @@ public class SymbolManger : MonoBehaviour
         botOrigin.sprite = spriteSetList[indexBot][2];
         botBasic.sprite = spriteSetList[indexBot][0];
         deleteBot = spriteSetList[indexBot][1];
-        Debug.Log("top:  " + indexTop );
-        Debug.Log("bot:  " + indexBot );
     }
 }
