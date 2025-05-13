@@ -277,7 +277,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 189505390}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1931138752}
+        m_TargetAssemblyTypeName: SymbolManger, Assembly-CSharp
+        m_MethodName: NextSymbolSetBot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &189505390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -534,7 +546,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 266267963}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1931138752}
+        m_TargetAssemblyTypeName: SymbolManger, Assembly-CSharp
+        m_MethodName: PreviusSymbolSetTop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &266267963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -655,7 +679,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 506504328}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1931138752}
+        m_TargetAssemblyTypeName: SymbolManger, Assembly-CSharp
+        m_MethodName: NextSymbolSetTop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &506504328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1107,7 +1143,7 @@ GameObject:
   - component: {fileID: 1054130732}
   - component: {fileID: 1054130731}
   m_Layer: 5
-  m_Name: MainMenu
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1265,7 +1301,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1126451518}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1931138752}
+        m_TargetAssemblyTypeName: SymbolManger, Assembly-CSharp
+        m_MethodName: PreviousSymbolSetBot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1126451518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2017,7 +2065,7 @@ GameObject:
   - component: {fileID: 1678929387}
   - component: {fileID: 1678929386}
   m_Layer: 5
-  m_Name: Origin
+  m_Name: topOrigin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2243,6 +2291,7 @@ GameObject:
   - component: {fileID: 1931138749}
   - component: {fileID: 1931138751}
   - component: {fileID: 1931138750}
+  - component: {fileID: 1931138752}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -2318,6 +2367,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1931138748}
   m_CullTransparentMesh: 1
+--- !u!114 &1931138752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931138748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 980d1be4529ba3545aa95c61e63b268c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topOrigin: {fileID: 1678929386}
+  topBasic: {fileID: 1950472152}
+  botOrigin: {fileID: 2040888731}
+  botBasic: {fileID: 2079289382}
 --- !u!1 &1950472150
 GameObject:
   m_ObjectHideFlags: 0
@@ -2330,7 +2395,7 @@ GameObject:
   - component: {fileID: 1950472153}
   - component: {fileID: 1950472152}
   m_Layer: 5
-  m_Name: Origin
+  m_Name: topBasic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2620,7 +2685,7 @@ GameObject:
   - component: {fileID: 2040888732}
   - component: {fileID: 2040888731}
   m_Layer: 5
-  m_Name: Origin
+  m_Name: botOrigin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2695,7 +2760,7 @@ GameObject:
   - component: {fileID: 2079289383}
   - component: {fileID: 2079289382}
   m_Layer: 5
-  m_Name: Origin
+  m_Name: botBasic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
