@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -66,27 +67,35 @@ public class Delete : MonoBehaviour
     }
 
     public void ResetDelete()
-{
-    deleteUsed = false;
-    deleteButtonImage.color = Color.white;
-    deleteButtonImage.material = null;
-    
-    // Ponastavi pravilen sprite glede na igralca
-    if (!CheckParent()) // Za spodnjega igralca
     {
-        deleteButtonImage.sprite = board.deleteOriginSymP1;
+        deleteUsed = false;
+        deleteButtonImage.color = Color.white;
+        deleteButtonImage.material = null;
+        
+        // Ponastavi pravilen sprite glede na igralca
+        if (!CheckParent()) // Za spodnjega igralca
+        {
+            deleteButtonImage.sprite = board.deleteOriginSymP1;
+        }
+        else // Za zgornjega igralca
+        {
+            deleteButtonImage.sprite = board.deleteOriginSymP2;
+        }
     }
-    else // Za zgornjega igralca
-    {
-        deleteButtonImage.sprite = board.deleteOriginSymP2;
-    }
-}
 
     public void HideAfterUse()
     {
-        deleteButtonImage.sprite = board.emptyCell;
-        deleteButtonImage.color = Color.clear; // Popolnoma prozorno
+        StartCoroutine(HideAfterUseCoroutine());
     }
+
+    private IEnumerator HideAfterUseCoroutine()
+    {
+        yield return null; // Počakaj na naslednji frame
+        deleteButtonImage.sprite = board.emptyCell;
+        deleteButtonImage.color = Color.clear;
+        deleteUsed = true;
+    }
+    
 
 }
 

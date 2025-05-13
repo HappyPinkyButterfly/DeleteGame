@@ -41,6 +41,7 @@ public class UpDelete : MonoBehaviour
             if (delete.deleteUsed)
             {
                 delete.HideAfterUse();
+                break;
             }
         }
     }

@@ -1,4 +1,5 @@
 
+using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,6 +26,7 @@ public class Cell : MonoBehaviour
 
     public void CellClick()
     {
+        
         if (!board.deleteProccess)
         {
             if (state.occupation == 0 && board.connectionTable.Count == 0)
@@ -66,7 +68,7 @@ public class Cell : MonoBehaviour
                 state.occupation = 1;
                 board.turnPlayer = !board.turnPlayer;
                 board.cellsInUse++;
-                Debug.Log("Stevilo celic v uporabi: " + board.cellsInUse );
+    
             }
             else if ((state.occupation == 1 || state.occupation == 2) && board.turnPlayer == state.symbolOwner)
             {
@@ -105,28 +107,34 @@ public class Cell : MonoBehaviour
                 }
             }
         }
+        else if (state.occupation == 0 && board.deleteProccess)
+        {
+            // popravi problem kjer ce si kluknil na delete, pocakal malo, 
+            // kliknil prazno cell, pocakal malo in kliknil legal target,
+            //  se delete ni izbrisal
+            EventSystem.current.SetSelectedGameObject(null);
+            return;
+        }
+        
         else if (state.occupation == 1 && board.turnPlayer != state.symbolOwner && board.connectionTable.Count == 0)
         {
-        // Brisanje nasprotnikovega znaka
-        if (board.turnPlayer)
-        {
-            buttonImage.sprite = board.originSymP1;
-            board.botDelete.HideUsedDelete();
-            
-        }
-        else
-        {
-            buttonImage.sprite = board.originSymP2;
-            board.upDelete.HideUsedDelete();
-            
-        }
-        state.occupation = 2;
-        board.turnPlayer = !board.turnPlayer;
-        state.symbolOwner = !state.symbolOwner;
-        board.deleteProccess = false;
-            
+            if (board.turnPlayer)
+            {
+                buttonImage.sprite = board.originSymP1;
+                board.botDelete.HideUsedDelete();
+            }
+            else
+            {
+                buttonImage.sprite = board.originSymP2;
+                board.upDelete.HideUsedDelete();
+            }
+            state.occupation = 2;
+            board.turnPlayer = !board.turnPlayer;
+            state.symbolOwner = !state.symbolOwner;
+            board.deleteProccess = false;     
         }
     }
+    
     public void ResetCell()
     {
         buttonImage.sprite = board.emptyCell;
