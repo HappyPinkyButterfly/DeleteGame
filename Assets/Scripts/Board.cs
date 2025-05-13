@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
+using UnityEditor;
 
 public class Board : MonoBehaviour
 {
@@ -61,6 +62,7 @@ public class Board : MonoBehaviour
 
     public void Start()
     {
+        
         rows = GetComponentsInChildren<Row>();
         cells = GetComponentsInChildren<CellForPrefab>();
         for( int y = 0; y < rows.Length; y++ )
@@ -74,6 +76,19 @@ public class Board : MonoBehaviour
 
           }
         }
+    }
+    public void SetSymbolsFromManager()
+    {
+        if (SymbolManger.Instance == null) return;
+        
+        basicSymP1 = SymbolManger.spriteSetList[SymbolManger.Instance.indexTop][0];
+        basicSymP2 = SymbolManger.spriteSetList[SymbolManger.Instance.indexBot][0];
+        
+        originSymP1 = SymbolManger.spriteSetList[SymbolManger.Instance.indexTop][2];
+        originSymP2 = SymbolManger.spriteSetList[SymbolManger.Instance.indexBot][2];
+        
+        deleteOriginSymP1 = SymbolManger.spriteSetList[SymbolManger.Instance.indexTop][1];
+        deleteOriginSymP2 = SymbolManger.spriteSetList[SymbolManger.Instance.indexBot][1];
     }
 
     
@@ -172,6 +187,7 @@ public class Board : MonoBehaviour
         connectionTable.Clear();
         deleteProccess = false;
         cellsInUse = 0;
+        SetSymbolsFromManager();
 
         // Resetiraj vse celice
         Cell[] allCells = FindObjectsByType<Cell>(FindObjectsInactive.Include, FindObjectsSortMode.None);

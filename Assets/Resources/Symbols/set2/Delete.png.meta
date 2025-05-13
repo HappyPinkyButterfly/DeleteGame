@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 405e6302614cb274d9e35c6ca9ba1095
+guid: ef39bcfa87b617f429a6aeea56ddff28
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4810349708825999081
-    second: cross_origin_0
+      213: -5439378754940017677
+    second: skull_maticni_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cross_origin_0
+      name: skull_maticni_0
       rect:
         serializedVersion: 2
-        x: 18
-        y: 15
-        width: 31
-        height: 31
+        x: 21
+        y: 23
+        width: 19
+        height: 27
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 719c5081d643e3db0800000000000000
-      internalID: -4810349708825999081
+      spriteID: 3f36ef867d17384b0800000000000000
+      internalID: -5439378754940017677
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      cross_origin_0: -4810349708825999081
+      skull_maticni_0: -5439378754940017677
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

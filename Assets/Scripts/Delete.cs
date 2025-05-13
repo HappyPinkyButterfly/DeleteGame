@@ -95,7 +95,6 @@ public class Delete : MonoBehaviour
         deleteButtonImage.color = Color.clear;
         deleteUsed = true;
     }
-    
 
 }
 
