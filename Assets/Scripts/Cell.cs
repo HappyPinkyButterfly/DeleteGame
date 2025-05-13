@@ -133,6 +133,7 @@ public class Cell : MonoBehaviour
             state.symbolOwner = !state.symbolOwner;
             board.deleteProccess = false;     
         }
+        EventSystem.current.SetSelectedGameObject(null);
     }
     
     public void ResetCell()

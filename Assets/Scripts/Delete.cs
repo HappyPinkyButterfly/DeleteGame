@@ -89,12 +89,18 @@ public class Delete : MonoBehaviour
     }
 
     private IEnumerator HideAfterUseCoroutine()
+{
+    // Wait until the delete process is complete
+    while (board.deleteProccess)
     {
-        yield return null; // Počakaj na naslednji frame
-        deleteButtonImage.sprite = board.emptyCell;
-        deleteButtonImage.color = Color.clear;
-        deleteUsed = true;
+        yield return null;
     }
+
+    // Hide the delete button after the process is done
+    deleteButtonImage.sprite = board.emptyCell;
+    deleteButtonImage.color = Color.clear;
+    deleteUsed = true;
+}
 
 }
 

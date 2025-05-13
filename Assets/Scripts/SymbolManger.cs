@@ -50,6 +50,8 @@ public class SymbolManger : MonoBehaviour
     {
         
         Debug.Log(spriteSetList.Count);
+        Debug.Log("Zacetni top:  " + indexTop );
+        Debug.Log("Zacetni bot:  " + indexBot );
         deleteTop = spriteSetList[indexTop][1];
         deleteBot = spriteSetList[indexBot][1];
 
@@ -74,97 +76,139 @@ public class SymbolManger : MonoBehaviour
     
     public void NextSymbolSetTop()
     {
-        if(indexTop + 1 == indexBot)
+        if(indexTop + 1 != indexBot && indexTop + 1 < spriteSetList.Count)
+        {
+            indexTop++;
+        }
+        else if(
+        indexTop + 1 != indexBot &&
+        indexTop + 1 == spriteSetList.Count &&
+        indexTop + 1 - spriteSetList.Count != indexBot
+        )
+        {
+           indexTop = indexTop + 1 - spriteSetList.Count; 
+        }
+        else if(
+        indexTop + 1 != indexBot &&
+        indexTop + 1 == spriteSetList.Count &&
+        indexTop + 1 - spriteSetList.Count == indexBot
+        )
+        {
+            indexTop = indexTop + 2 - spriteSetList.Count; 
+        }
+        else if(
+            indexTop + 1 == indexBot && 
+            indexTop + 2 < spriteSetList.Count)
         {
             indexTop++;
             indexTop++;
-            if(indexTop > spriteSetList.Count - 1)
-            {
-                indexTop = 0;
-            }
         }
-        else
+        else if(
+        indexTop + 1 == indexBot &&
+        indexTop + 2 == spriteSetList.Count)
         {
-           indexTop++; 
-           if(indexTop > spriteSetList.Count - 1)
-            {
-                indexTop = 0;
-            }
+            indexTop = indexTop + 2 - spriteSetList.Count;
         }
-        topOrigin.sprite = spriteSetList[indexTop][2];
-        topBasic.sprite = spriteSetList[indexTop][0];
-        deleteTop = spriteSetList[indexTop][1];
-    }
 
-    public void PreviusSymbolSetTop()
-    {
-        if(indexTop - 1 == indexBot)
-        {
-            indexTop--;
-            indexTop--;
-            if(indexTop < 0)
-            {
-                indexTop = spriteSetList.Count - 1;
-            }
-        }
-        else
-        {
-           indexTop--;
-           if(indexTop < 0)
-            {
-                indexTop = spriteSetList.Count - 1;
-            } 
-        }
         topOrigin.sprite = spriteSetList[indexTop][2];
         topBasic.sprite = spriteSetList[indexTop][0];
         deleteTop = spriteSetList[indexTop][1];
+        Debug.Log("top:  " + indexTop );
+        Debug.Log("bot:  " + indexBot );
     }
 
     public void NextSymbolSetBot()
     {
-        if(indexTop == indexBot + 1)
+
+        if(indexBot + 1 != indexTop && indexBot + 1 < spriteSetList.Count)
+        {
+            indexBot++;
+        }
+        else if(
+        indexBot + 1 != indexTop &&
+        indexBot + 1 == spriteSetList.Count &&
+        indexBot + 1 - spriteSetList.Count != indexTop
+        )
+        {
+           indexBot = indexBot + 1 - spriteSetList.Count; 
+        }
+        else if(
+        indexBot + 1 != indexTop &&
+        indexBot + 1 == spriteSetList.Count &&
+        indexBot + 1 - spriteSetList.Count == indexTop
+        )
+        {
+            indexBot = indexBot + 2 - spriteSetList.Count; 
+        }
+        else if(
+            indexBot + 1 == indexTop && 
+            indexBot + 2 < spriteSetList.Count)
         {
             indexBot++;
             indexBot++;
-            if(indexBot > spriteSetList.Count - 1)
-            {
-                indexBot = 0;
-            }
         }
-        else
+        else if(
+        indexBot + 1 == indexTop &&
+        indexBot + 2 == spriteSetList.Count)
         {
-           indexBot++;
-           if(indexBot > spriteSetList.Count - 1)
-            {
-                indexBot = 0;
-            } 
+            indexBot = indexBot + 2 - spriteSetList.Count;
         }
+        
+
         botOrigin.sprite = spriteSetList[indexBot][2];
         botBasic.sprite = spriteSetList[indexBot][0];
         deleteBot = spriteSetList[indexBot][1];
+        Debug.Log("top:  " + indexTop );
+        Debug.Log("bot:  " + indexBot );
     }
+
+    public void PreviusSymbolSetTop()
+    {
+        int x = 0;
+        while(x != 2)
+        {
+            if(indexTop -1 <= 0)
+            {
+                indexTop = spriteSetList.Count - 1;
+            }
+            if(indexBot == indexTop)
+            {
+                indexTop--;
+            }
+            x++;
+        }
+        
+
+        topOrigin.sprite = spriteSetList[indexTop][2];
+        topBasic.sprite = spriteSetList[indexTop][0];
+        deleteTop = spriteSetList[indexTop][1];
+        Debug.Log("top:  " + indexTop );
+        Debug.Log("bot:  " + indexBot );
+    }
+
+    
 
     public void PreviousSymbolSetBot()
     {
-        if(indexTop == indexBot - 1)
+        int x = 0;
+        while(x != 2)
         {
-            indexBot--;
-            indexBot--;
-            if(indexBot < 0)
+
+            if(indexBot - 1 <= 0)
             {
                 indexBot = spriteSetList.Count - 1;
             }
-        }
-        else
-        {
-           indexBot--;
-           if(indexBot < 0)
+            if(indexBot == indexTop)
             {
-                indexBot = spriteSetList.Count - 1;
-            } 
+                indexBot--;
+            }
+            x++;
         }
+
         botOrigin.sprite = spriteSetList[indexBot][2];
         botBasic.sprite = spriteSetList[indexBot][0];
         deleteBot = spriteSetList[indexBot][1];
+        Debug.Log("top:  " + indexTop );
+        Debug.Log("bot:  " + indexBot );
     }
 }
