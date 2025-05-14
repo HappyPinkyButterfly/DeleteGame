@@ -20,7 +20,7 @@ public class SymbolManger : MonoBehaviour
     public int indexTop = 0;
     public int indexBot = 1;
 
-    public static int numberOfSymbolSets = 4;
+    public static int numberOfSymbolSets = 6;
 
     private Sprite deleteTop {get;set;}
     private Sprite deleteBot {get;set;}
