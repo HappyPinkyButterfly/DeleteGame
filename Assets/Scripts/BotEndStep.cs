@@ -2,15 +2,16 @@ using UnityEngine;
 
 public class BotEndStep : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public Board board;
+    public MoveCell[] moveCells{get;set;}
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        moveCells = GetComponentsInChildren<MoveCell>();
+        foreach (MoveCell moveCell in moveCells)
+        {
+            Move move = Instantiate(board.movePrefab, moveCell.transform);
+            move.transform.position = moveCell.transform.position;
+        }
     }
 }

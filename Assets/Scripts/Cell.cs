@@ -2,18 +2,20 @@
 using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 
 public class Cell : MonoBehaviour
 {
 
-   private Board board;
+    private Board board;
 
-   public CellState state {get;  set;}
+    public CellState state { get; set; }
 
-   public Button button;
-   public Image buttonImage{get;set;}
-   public Vector2Int location {get; set;}   
+    public Button button;
+    public Image buttonImage { get; set; }
+    public Vector2Int location { get; set; }
+    public List<Cell> moveTable { get; set; } = new List<Cell>();
 
     public void Awake()
     {
@@ -21,13 +23,39 @@ public class Cell : MonoBehaviour
         buttonImage = GetComponent<Image>();
         buttonImage.sprite = board.emptyCell;
         state = gameObject.AddComponent<CellState>();
-        
+
     }
 
     public void CellClick()
     {
+        if (board.moveProccess)
+        {
+            if (board.selectedCellForMove == null)
+            {
+                if (this.state.symbolOwner == board.turnPlayer &&
+                    (this.state.occupation == 1 || this.state.occupation == 2))
+                {
+                    board.selectedCellForMove = this;
+                    FindPossibleMoves();
+                    HighlightSelection();
+                }
+                return;
+            }
         
-        if (!board.deleteProccess)
+            // Faza 2: Izbor ciljne celice
+            if (board.selectedCellForMove != null && 
+                this != board.selectedCellForMove && 
+                board.selectedCellForMove.moveTable != null && 
+                board.selectedCellForMove.moveTable.Contains(this))
+            {
+                MoveSymbolToThisCell();
+                board.ResetMoveProcess();
+            }
+
+        }
+     
+        
+        else if (!board.deleteProccess)
         {
             if (state.occupation == 0 && board.connectionTable.Count == 0)
             {
@@ -50,7 +78,7 @@ public class Cell : MonoBehaviour
                     board.botFirstMove = false;
                     board.turnPlayer = !board.turnPlayer;
                     board.cellsInUse++;
-                
+
                     return;
                 }
 
@@ -68,20 +96,20 @@ public class Cell : MonoBehaviour
                 state.occupation = 1;
                 board.turnPlayer = !board.turnPlayer;
                 board.cellsInUse++;
-    
+
             }
             else if ((state.occupation == 1 || state.occupation == 2) && board.turnPlayer == state.symbolOwner)
             {
-                if(!board.connectionTable.Contains(this))
+                if (!board.connectionTable.Contains(this))
                 {
                     board.connectionTable.Add(this);
                     buttonImage.color = Color.green;
 
-                    if(board.connectionTable.Count == 3)
+                    if (board.connectionTable.Count == 3)
                     {
-                        if(board.CheckForConnection())
-                        {   
-                            if(!board.turnPlayer)
+                        if (board.CheckForConnection())
+                        {
+                            if (!board.turnPlayer)
                             {
                                 board.topScoreBoard.AddVictoryPointTop();
                                 board.upDelete.getOneDeleteBack();
@@ -89,9 +117,9 @@ public class Cell : MonoBehaviour
                             else
                             {
                                 board.botScoreBoard.AddVictoryPointBot();
-                                board.botDelete.getOneDeleteBack();         
+                                board.botDelete.getOneDeleteBack();
                             }
-                            
+
                             board.SuccessfulConnection();
                         }
                         else
@@ -115,7 +143,7 @@ public class Cell : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(null);
             return;
         }
-        
+
         else if (state.occupation == 1 && board.turnPlayer != state.symbolOwner && board.connectionTable.Count == 0)
         {
             if (board.turnPlayer)
@@ -131,14 +159,121 @@ public class Cell : MonoBehaviour
             state.occupation = 2;
             board.turnPlayer = !board.turnPlayer;
             state.symbolOwner = !state.symbolOwner;
-            board.deleteProccess = false;     
+            board.deleteProccess = false;
         }
     }
-    
+
     public void ResetCell()
     {
         buttonImage.sprite = board.emptyCell;
         buttonImage.color = Color.white;
         state.occupation = 0;
+    }
+
+    public void FindPossibleMoves()
+    {
+        moveTable.Clear();
+        Debug.Log("Sem v find possible moves");
+        // Vse možne smeri v 8-smernem gridu
+        Vector2Int[] directions = new Vector2Int[]
+        {
+            new Vector2Int(1, 0),   // desno
+            new Vector2Int(1, 1),   // desno gor
+            new Vector2Int(0, 1),    // gor
+            new Vector2Int(-1, 1),  // levo gor
+            new Vector2Int(-1, 0),  // levo
+            new Vector2Int(-1, -1), // levo dol
+            new Vector2Int(0, -1),  // dol
+            new Vector2Int(1, -1)   // desno dol
+        };
+
+        foreach (Vector2Int direction in directions)
+        {
+            CheckDirection(direction);
+        }
+    }
+    private void CheckDirection(Vector2Int direction)
+    {
+        Debug.Log("Sem v check direction");
+        Vector2Int currentPos = location;
+        bool foundValidCell = false;
+        
+        while (!foundValidCell)
+        {
+            currentPos += direction;
+            if (currentPos.x < 0 || currentPos.y < 0 || currentPos.x > 7 || currentPos.y > 7)
+            {
+                break;
+            }
+            Cell neighbor = board.GetCellAtPosition(currentPos);
+            Debug.Log(neighbor.location);
+            
+            // Če smo izven mreže ali naletimo na zasedeno celico (ki ni teren)
+            if (neighbor == null || (neighbor.state.occupation > 0 && neighbor.buttonImage.sprite != board.terrain))
+            {
+                break;
+            }
+
+            // Če je celica teren, preskoči in nadaljuj iskanje
+            if (neighbor.buttonImage.sprite == board.terrain)
+            {
+                continue;
+            }
+
+            // Če je celica prazna, dodaj med možne cilje
+            if (neighbor.state.occupation == 0)
+            {
+                moveTable.Add(neighbor);
+                foundValidCell = true;
+            }
+        }
+    }
+    private void HighlightSelection()
+    {
+            // Označi izbrano celico s svetlo zeleno
+        this.buttonImage.color = Color.yellow; // Svetlo zelena
+        
+        // Označi vse možne cilje s temno zeleno
+        foreach (Cell cell in moveTable)
+        {
+                cell.buttonImage.color = Color.green; // Temno zelena
+        }
+    }
+
+
+    private void MoveSymbolToThisCell()
+{
+    // Premakni znak
+    this.buttonImage.sprite = board.selectedCellForMove.buttonImage.sprite;
+    this.state.occupation = board.selectedCellForMove.state.occupation;
+    this.state.symbolOwner = board.selectedCellForMove.state.symbolOwner;
+
+    // Počisti staro celico
+    board.selectedCellForMove.ResetCell();
+    
+    // Ponastavi označbe (brez ponastavitve Move gumba)
+    board.selectedCellForMove.ClearHighlights();
+    board.moveProccess = false;
+    board.selectedCellForMove = null;
+    
+    // Move gumb OSTAJE porabljen (moveUsed ostane true)
+}
+    
+    public void ClearHighlights()
+    {
+        // Ponastavi barvo trenutne celice
+        this.buttonImage.color = Color.white;
+        
+        // Ponastavi barve vseh možnih ciljnih celic
+        foreach (Cell cell in this.moveTable)
+        {
+            if (cell != null && cell.buttonImage != null)
+            {
+                cell.buttonImage.color = Color.white;
+            }
+        }
+        
+        // Počisti seznam možnih potez
+        this.moveTable.Clear();
     }
 }

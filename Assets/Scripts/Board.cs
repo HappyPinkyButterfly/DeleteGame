@@ -39,8 +39,8 @@ public class Board : MonoBehaviour
 
     public Sprite cover;
 
-    public bool topFirstMove {get;set;}
-    public bool botFirstMove {get;set;}
+    public bool topFirstMove { get; set; }
+    public bool botFirstMove { get; set; }
 
 
     public Field field;
@@ -61,6 +61,7 @@ public class Board : MonoBehaviour
     public BotTurn botTurn;
     public Move movePrefab;
     public bool moveProccess { get; set; }
+    public Cell selectedCellForMove { get; set; }
 
 
     public void Start()
@@ -83,18 +84,18 @@ public class Board : MonoBehaviour
     public void SetSymbolsFromManager()
     {
         if (SymbolManger.Instance == null) return;
-        
+
         basicSymP2 = SymbolManger.spriteSetList[SymbolManger.Instance.indexTop][0];
         basicSymP1 = SymbolManger.spriteSetList[SymbolManger.Instance.indexBot][0];
-        
+
         originSymP2 = SymbolManger.spriteSetList[SymbolManger.Instance.indexTop][2];
         originSymP1 = SymbolManger.spriteSetList[SymbolManger.Instance.indexBot][2];
-        
+
         deleteOriginSymP2 = SymbolManger.spriteSetList[SymbolManger.Instance.indexTop][1];
         deleteOriginSymP1 = SymbolManger.spriteSetList[SymbolManger.Instance.indexBot][1];
     }
 
-    
+
     public bool CheckForConnection()
     {
         Vector2Int pos1 = connectionTable[0].location;
@@ -154,11 +155,6 @@ public class Board : MonoBehaviour
 
     }
 
-    private IEnumerator ConnectionRoutine()
-    {
-        yield return new WaitForSeconds(0.5f);
-    }
-
     public void UnsuccessfulConnection()
     {
         StartCoroutine(UnsuccessfulConnectionRoutine());
@@ -184,13 +180,19 @@ public class Board : MonoBehaviour
     {
 
         disable = false;
-        turnPlayer =  Random.Range(0, 2) == 1;
+        turnPlayer = Random.Range(0, 2) == 1;
         topFirstMove = true;
         botFirstMove = true;
         connectionTable.Clear();
         deleteProccess = false;
         cellsInUse = 0;
         SetSymbolsFromManager();
+        Move[] allMoves = FindObjectsByType<Move>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Move move in allMoves)
+        {
+            move.moveUsed = false;
+            move.moveButtonImage.color = Color.white;
+        }
 
         // Resetiraj vse celice
         Cell[] allCells = FindObjectsByType<Cell>(FindObjectsInactive.Include, FindObjectsSortMode.None);
@@ -199,7 +201,7 @@ public class Board : MonoBehaviour
             cell.ResetCell();
         }
 
-       
+
         Delete[] allDeletes = FindObjectsByType<Delete>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         foreach (Delete delete in allDeletes)
         {
@@ -209,7 +211,7 @@ public class Board : MonoBehaviour
         // Resetiraj točke
         if (topScoreBoard != null)
             topScoreBoard.ResetPoints();
-        
+
         if (botScoreBoard != null)
             botScoreBoard.ResetPoints();
     }
@@ -221,11 +223,35 @@ public class Board : MonoBehaviour
         {
             if (cell.state.occupation == 1 && cell.state.symbolOwner != turnPlayer)
             {
-              return true;
+                return true;
             }
         }
-      return false;
+        return false;
     }
+
+    public Cell GetCellAtPosition(Vector2Int pos)
+    {
+        foreach (Row row in rows)
+        {
+            foreach (CellForPrefab cell in row.cells)
+            {
+                if (cell.location == pos)
+                {
+                    return cell.GetComponentInChildren<Cell>();
+                }
+            }
+        }
+        return null;
+    }
+    
+    // V Board.cs spremenite ResetMoveProcess() na:
+    public void ResetMoveProcess()
+    {
+        moveProccess = false;
+        selectedCellForMove = null;
+        turnPlayer = !turnPlayer; 
+    }
+
    
 }
 

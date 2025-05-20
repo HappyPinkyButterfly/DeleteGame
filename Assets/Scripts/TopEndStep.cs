@@ -4,7 +4,6 @@ public class TopEndStep : MonoBehaviour
 {
     public Board board;
     public MoveCell[] moveCells{get;set;}
-    //public Delete[] upDeletesAvailable;
 
     private void Awake()
     {

@@ -5,41 +5,47 @@ public class Move : MonoBehaviour
 {
     public bool moveProccess;
     public Board board{get;set;}
-    private bool isPlayerDown { get; set; }
+    public bool isPlayerDown { get; set; }
     public bool moveUsed = false;
     public Image moveButtonImage{get;set;}
 
     public void Awake()
     {
         board = GetComponentInParent<Board>();
-        isPlayerDown = transform.parent.name.Contains("TopEndStep");
+        isPlayerDown = transform.parent.name.Contains("TopMoveCell");
         moveButtonImage = GetComponent<Image>();
 
     }
     public void OnMoveClick()
     {
         if (
-            //!isPlayerDown == board.turnPlayer &&
-//board.connectionTable.Count == 0 &&
+            !isPlayerDown == board.turnPlayer &&
+            board.connectionTable.Count == 0 &&
             !board.deleteProccess &&
             !board.moveProccess &&
             !moveUsed &&
             !board.topFirstMove &&
             !board.botFirstMove &&
-            YouHaveSymbol()
+            PlayerHasMovableSymbols()
         )
         {
-            moveProccess = true;
+            board.moveProccess = true;
             moveUsed = true;
-            Debug.Log("YES");
             moveButtonImage.color = Color.clear;
-
-
         }
 
     }
-    public bool YouHaveSymbol()
+    private bool PlayerHasMovableSymbols()
     {
-        return true;
+        Cell[] allCells = FindObjectsByType<Cell>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Cell cell in allCells)
+        {
+            if (cell.state.symbolOwner == board.turnPlayer && 
+                (cell.state.occupation == 1 || cell.state.occupation == 2))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

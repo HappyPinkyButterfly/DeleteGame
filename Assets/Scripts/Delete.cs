@@ -11,18 +11,13 @@ public class Delete : MonoBehaviour
 
     public Image deleteButtonImage{get;set;}
 
-    public bool deleteTurnPlayer {get;set;}
-
     private bool isPlayerDown;
 
     public bool deleteUsed = false;
 
-    public bool isWaiting = false;
-
     private void Awake()
     {
         board = GetComponentInParent<Board>();
-        deleteTurnPlayer = false;
         deleteButton = GetComponent<Button>();
         deleteButtonImage = GetComponent<Image>();
         isPlayerDown = transform.parent.name.Contains("UpDeleteCell");
@@ -37,9 +32,10 @@ public class Delete : MonoBehaviour
     }
     public void DeleteCell()
     {   
-        if(
-        !isPlayerDown == board.turnPlayer 
-        && board.connectionTable.Count == 0 
+        Debug.Log(isPlayerDown + " | " +board.turnPlayer);
+        if (
+        !isPlayerDown == board.turnPlayer
+        && board.connectionTable.Count == 0
         && !board.deleteProccess
         && !deleteUsed
         && !board.topFirstMove
