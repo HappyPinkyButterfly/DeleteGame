@@ -60,6 +60,7 @@ public class Board : MonoBehaviour
     public TopTurn topTurn;
     public BotTurn botTurn;
     public Move movePrefab;
+    public bool moveProccess { get; set; }
 
 
     public void Start()
@@ -183,8 +184,8 @@ public class Board : MonoBehaviour
     {
 
         disable = false;
-        turnPlayer = true;
-        topFirstMove = false;
+        turnPlayer =  Random.Range(0, 2) == 1;
+        topFirstMove = true;
         botFirstMove = true;
         connectionTable.Clear();
         deleteProccess = false;
