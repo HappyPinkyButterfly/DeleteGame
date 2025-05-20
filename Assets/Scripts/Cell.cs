@@ -28,7 +28,14 @@ public class Cell : MonoBehaviour
 
     public void CellClick()
     {
-        if (board.moveProccess)
+        if (board.artTerProcess && this.state.occupation == 0)
+        {
+            buttonImage.sprite = board.artTer;
+            this.state.occupation = 4;
+            board.artTerProcess = false;
+            return;
+        }
+        else if (board.moveProccess)
         {
             if (board.selectedCellForMove == null)
             {
@@ -41,11 +48,11 @@ public class Cell : MonoBehaviour
                 }
                 return;
             }
-        
+
             // Faza 2: Izbor ciljne celice
-            if (board.selectedCellForMove != null && 
-                this != board.selectedCellForMove && 
-                board.selectedCellForMove.moveTable != null && 
+            if (board.selectedCellForMove != null &&
+                this != board.selectedCellForMove &&
+                board.selectedCellForMove.moveTable != null &&
                 board.selectedCellForMove.moveTable.Contains(this))
             {
                 MoveSymbolToThisCell();
@@ -53,8 +60,8 @@ public class Cell : MonoBehaviour
             }
 
         }
-     
-        
+
+
         else if (!board.deleteProccess)
         {
             if (state.occupation == 0 && board.connectionTable.Count == 0)
@@ -173,7 +180,7 @@ public class Cell : MonoBehaviour
     public void FindPossibleMoves()
     {
         moveTable.Clear();
-        Debug.Log("Sem v find possible moves");
+
         // Vse možne smeri v 8-smernem gridu
         Vector2Int[] directions = new Vector2Int[]
         {

@@ -63,6 +63,13 @@ public class Board : MonoBehaviour
     public bool moveProccess { get; set; }
     public Cell selectedCellForMove { get; set; }
 
+    public Heal healPrefab;
+    public ArtificialTerrain artificialTerrainPrefab;
+    public bool artTerProcess { get; set; }
+    public Sprite artTer;
+
+    
+
 
     public void Start()
     {
@@ -192,6 +199,13 @@ public class Board : MonoBehaviour
         {
             move.moveUsed = false;
             move.moveButtonImage.color = Color.white;
+        }
+
+        ArtificialTerrain[] allArtTer = FindObjectsByType<ArtificialTerrain>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (ArtificialTerrain artTer in allArtTer)
+        {
+            artTer.artTerUsed = false;
+            artTer.artTerButtonImage.color = Color.white;
         }
 
         // Resetiraj vse celice

@@ -5,6 +5,9 @@ public class TopEndStep : MonoBehaviour
     public Board board;
     public MoveCell[] moveCells{get;set;}
 
+    public CreateCell[] createCells{get;set;}
+    public DestroyCell[] destroyCells{get;set;}
+
     private void Awake()
     {
         moveCells = GetComponentsInChildren<MoveCell>();
@@ -12,6 +15,20 @@ public class TopEndStep : MonoBehaviour
         {
             Move move = Instantiate(board.movePrefab, moveCell.transform);
             move.transform.position = moveCell.transform.position;
+        }
+
+        createCells = GetComponentsInChildren<CreateCell>();
+        foreach (CreateCell createCell in createCells)
+        {
+            Heal heal = Instantiate(board.healPrefab, createCell.transform);
+            heal.transform.position = createCell.transform.position;
+        }
+
+        destroyCells = GetComponentsInChildren<DestroyCell>();
+        foreach (DestroyCell destroyCell in destroyCells)
+        {
+            ArtificialTerrain artTer = Instantiate(board.artificialTerrainPrefab, destroyCell.transform);
+            artTer.transform.position = destroyCell.transform.position;
         }
     }
 }
