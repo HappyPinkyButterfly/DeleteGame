@@ -222,7 +222,7 @@ public class Cell : MonoBehaviour
             }
 
             // Če je celica teren, preskoči in nadaljuj iskanje
-            if (neighbor.buttonImage.sprite == board.terrain)
+            if (neighbor.buttonImage.sprite == board.terrain && neighbor.buttonImage.sprite == board.artTer)
             {
                 continue;
             }
