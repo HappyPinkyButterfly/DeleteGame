@@ -8,7 +8,7 @@ public class ArtificialTerrain : MonoBehaviour
     public bool isPlayerDown { get; set; }
     public bool artTerUsed = false;
     public Image artTerButtonImage { get; set; }
-    private Color highlightColor = new Color(0.7f, 1f, 0.7f, 1f);
+    private Color highlightColor = new Color(0.9f, 0.98f, 0.9f, 1f);
 
     public void Awake()
     {

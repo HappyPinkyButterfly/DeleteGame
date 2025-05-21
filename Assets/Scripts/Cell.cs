@@ -385,11 +385,9 @@ public class Cell : MonoBehaviour
         Cell[] allCells = FindObjectsByType<Cell>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         foreach (Cell cell in allCells)
         {
-            if (cell.state.occupation == 0)
-            {
-                // Reset to original color
-                cell.buttonImage.color = Color.white;
-            }
+
+             cell.buttonImage.color = Color.white;
+            
         }
     }
     public void ResetTerrainAlpha()

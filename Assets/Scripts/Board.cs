@@ -211,11 +211,25 @@ public class Board : MonoBehaviour
         startStep = true;
         cellsInUse = 0;
         SetSymbolsFromManager();
+
+        bool firstSkipped = false;
+
         Move[] allMoves = FindObjectsByType<Move>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         foreach (Move move in allMoves)
         {
-            move.moveUsed = false;
-            move.moveButtonImage.color = Color.white;
+            if (!firstSkipped && move.isPlayerDown == turnPlayer)
+            {
+                // Prvi delete za začetnega igralca nastavimo kot že porabljen
+                move.moveUsed = true;
+                move.moveButtonImage.color = Color.clear;
+                firstSkipped = true;
+            }
+            else
+            {
+                move.moveUsed = false;
+                move.moveButtonImage.color = Color.white; 
+            }
+                
         }
 
         ArtificialTerrain[] allArtTer = FindObjectsByType<ArtificialTerrain>(FindObjectsInactive.Include, FindObjectsSortMode.None);

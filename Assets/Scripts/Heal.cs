@@ -8,7 +8,7 @@ public class Heal : MonoBehaviour
     public bool isPlayerDown { get; set; }
     public bool healUsed = false;
     public Image healButtonImage { get; set; }
-    private float highlightAlpha = 0.75f;
+    private float highlightAlpha = 0.965f;
 
     public void Awake()
     {
