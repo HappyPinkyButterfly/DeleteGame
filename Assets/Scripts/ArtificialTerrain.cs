@@ -8,6 +8,7 @@ public class ArtificialTerrain : MonoBehaviour
     public bool isPlayerDown { get; set; }
     public bool artTerUsed = false;
     public Image artTerButtonImage { get; set; }
+    private Color highlightColor = new Color(0.7f, 1f, 0.7f, 1f);
 
     public void Awake()
     {
@@ -43,6 +44,7 @@ public class ArtificialTerrain : MonoBehaviour
             board.artTerProcess = true;
             artTerUsed = true;
             artTerButtonImage.color = Color.clear;
+            HighlightEmptyCells();
         }
     }
     public bool EmptyCellAvailable()
@@ -56,5 +58,17 @@ public class ArtificialTerrain : MonoBehaviour
             }
         }
         return false;
+    }
+    private void HighlightEmptyCells()
+    {
+        Cell[] allCells = FindObjectsByType<Cell>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Cell cell in allCells)
+        {
+            if (cell.state.occupation == 0) // Empty cell
+            {
+                // Apply subtle green highlight
+                cell.buttonImage.color = highlightColor;
+            }
+        }
     }
 }

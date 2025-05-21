@@ -8,6 +8,7 @@ public class Heal : MonoBehaviour
     public bool isPlayerDown { get; set; }
     public bool healUsed = false;
     public Image healButtonImage { get; set; }
+    private float highlightAlpha = 0.75f;
 
     public void Awake()
     {
@@ -43,6 +44,9 @@ public class Heal : MonoBehaviour
             board.healProccess = true;
             healUsed = true;
             healButtonImage.color = Color.clear;
+            HighlightTerrainCells();
+            
+        
         }
     }
 
@@ -54,9 +58,26 @@ public class Heal : MonoBehaviour
             if (cell.state.occupation == 3)
             {
                 return true;
-                
+
             }
         }
         return false;
-     }
+    }
+    
+    private void HighlightTerrainCells()
+    {
+        Cell[] allCells = FindObjectsByType<Cell>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Cell cell in allCells)
+        {
+            if (cell.state.occupation == 3) // Terren
+            {
+                // Nastavi 50% transparentnost
+                Color cellColor = cell.buttonImage.color;
+                cellColor.a = highlightAlpha;
+                cell.buttonImage.color = cellColor;
+            }
+        }
+    }
+
+
 }

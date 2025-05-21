@@ -4,10 +4,10 @@ using UnityEngine.UI;
 public class Move : MonoBehaviour
 {
     public bool moveProccess;
-    public Board board{get;set;}
+    public Board board { get; set; }
     public bool isPlayerDown { get; set; }
     public bool moveUsed = false;
-    public Image moveButtonImage{get;set;}
+    public Image moveButtonImage { get; set; }
 
     public void Awake()
     {
@@ -18,10 +18,10 @@ public class Move : MonoBehaviour
     }
     public void OnMoveClick()
     {
-       
+
 
         if (
-            !isPlayerDown==board.turnPlayer &&
+            !isPlayerDown == board.turnPlayer &&
             board.connectionTable.Count == 0 &&
             !board.deleteProccess &&
             !board.moveProccess &&
@@ -34,6 +34,8 @@ public class Move : MonoBehaviour
             board.moveProccess = true;
             moveUsed = true;
             moveButtonImage.color = Color.clear;
+
+            HighlightMovableSymbols();
         }
 
     }
@@ -42,12 +44,29 @@ public class Move : MonoBehaviour
         Cell[] allCells = FindObjectsByType<Cell>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         foreach (Cell cell in allCells)
         {
-            if (cell.state.symbolOwner == board.turnPlayer && 
+            if (cell.state.symbolOwner == board.turnPlayer &&
                 (cell.state.occupation == 1 || cell.state.occupation == 2))
             {
                 return true;
             }
         }
         return false;
+    }
+    
+    private void HighlightMovableSymbols()
+    {
+        Cell[] allCells = FindObjectsByType<Cell>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Cell cell in allCells)
+        {
+            if (cell.state.symbolOwner == board.turnPlayer &&
+                (cell.state.occupation == 1 || cell.state.occupation == 2))
+            {
+                cell.buttonImage.color = Color.cyan; // Use cyan for movable symbols
+            }
+            else
+            {
+                cell.buttonImage.color = Color.white;
+            }
+        }
     }
 }

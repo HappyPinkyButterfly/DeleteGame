@@ -9,7 +9,7 @@ public class Delete : MonoBehaviour
     private Board board;
     public Button deleteButton;
 
-    public Image deleteButtonImage{get;set;}
+    public Image deleteButtonImage { get; set; }
 
     private bool isPlayerDown;
 
@@ -21,18 +21,18 @@ public class Delete : MonoBehaviour
         deleteButton = GetComponent<Button>();
         deleteButtonImage = GetComponent<Image>();
         isPlayerDown = transform.parent.name.Contains("UpDeleteCell");
-        if(!CheckParent())
+        if (!CheckParent())
         {
             deleteButtonImage.sprite = board.deleteOriginSymP1;
         }
         else
         {
-           deleteButtonImage.sprite = board.deleteOriginSymP2; 
+            deleteButtonImage.sprite = board.deleteOriginSymP2;
         }
     }
     public void DeleteCell()
-    {   
-        Debug.Log(isPlayerDown + " | " +board.turnPlayer);
+    {
+        Debug.Log(isPlayerDown + " | " + board.turnPlayer);
         if (
         !isPlayerDown == board.turnPlayer
         && board.connectionTable.Count == 0
@@ -45,6 +45,7 @@ public class Delete : MonoBehaviour
             board.deleteProccess = true;
             deleteUsed = true;
             deleteButtonImage.color = new Color(1, 1, 1, 0);
+            HighlightEnemyBasicSymbols();
         }
     }
 
@@ -53,15 +54,15 @@ public class Delete : MonoBehaviour
     private bool CheckParent()
     {
         Transform parent = transform.parent;
-        
+
         if (parent.name.Contains("UpDelete"))
         {
             return true;
         }
-        else 
+        else
         {
             return false;
-        }       
+        }
     }
 
     public void ResetDelete()
@@ -69,7 +70,7 @@ public class Delete : MonoBehaviour
         deleteUsed = false;
         deleteButtonImage.color = Color.white;
         deleteButtonImage.material = null;
-        
+
         // Ponastavi pravilen sprite glede na igralca
         if (!CheckParent()) // Za spodnjega igralca
         {
@@ -81,27 +82,24 @@ public class Delete : MonoBehaviour
         }
     }
 
-    // public void HideAfterUse()
-    // {
-    //     StartCoroutine(HideAfterUseCoroutine());
-    // }
+    private void HighlightEnemyBasicSymbols()
+{
+    Cell[] allCells = FindObjectsByType<Cell>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+    foreach (Cell cell in allCells)
+    {
+        if (cell.state.occupation == 1 && cell.state.symbolOwner != board.turnPlayer)
+        {
+            cell.buttonImage.color = Color.green; // Highlight in green
+        }
+        else
+        {
+            cell.buttonImage.color = Color.white; // Reset others
+        }
+    }
+}
 
-    // private IEnumerator HideAfterUseCoroutine()
-    // {
-    // // Wait until the delete process is complete
-    // while (board.deleteProccess)
-    // {
-    //     yield return null;
-    // }
 
-    // // Hide the delete button after the process is done
-    
-    // deleteButtonImage.sprite = board.emptyCell;
-    // deleteButtonImage.color = Color.clear;
-    // deleteUsed = true;
-    // EventSystem.current.SetSelectedGameObject(null);
-    
-    // }
+
 
 }
 

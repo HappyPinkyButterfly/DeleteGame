@@ -67,14 +67,14 @@ public class Board : MonoBehaviour
     public ArtificialTerrain artificialTerrainPrefab;
     public bool artTerProcess { get; set; }
     public Sprite artTer;
-    public bool healProccess{ get; set; }
+    public bool healProccess { get; set; }
 
     public Sprite healedCell;
     public bool boardType;
 
     public bool startStep;
 
-    
+
 
 
     public void Start()
@@ -169,7 +169,7 @@ public class Board : MonoBehaviour
         if (!boardType)
         {
             turnPlayer = !turnPlayer;
-            
+
         }
         else
         {
@@ -233,7 +233,7 @@ public class Board : MonoBehaviour
         }
 
         // Resetiraj vse celice
-        Heal [] allHeals = FindObjectsByType<Heal>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        Heal[] allHeals = FindObjectsByType<Heal>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         foreach (Heal heal in allHeals)
         {
             heal.healProccess = false;
@@ -282,7 +282,7 @@ public class Board : MonoBehaviour
         }
         return null;
     }
-    
+
     // V Board.cs spremenite ResetMoveProcess() na:
     public void ResetMoveProcess()
     {
@@ -292,6 +292,39 @@ public class Board : MonoBehaviour
         startStep = true;
     }
 
+    public void CancelDeleteProcess()
+    {
+        deleteProccess = false;
+
+        // Clear all highlights
+        Cell[] allCells = FindObjectsByType<Cell>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Cell cell in allCells)
+        {
+            cell.buttonImage.color = Color.white;
+        }
+    }
+    public void CancelMoveProcess()
+    {
+        moveProccess = false;
+        selectedCellForMove = null;
+
+        // Clear all highlights
+        Cell[] allCells = FindObjectsByType<Cell>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Cell cell in allCells)
+        {
+            cell.buttonImage.color = Color.white;
+        }
+    }
+    
+    public void CancelProcess()
+    {
+
+        Cell[] allCells = FindObjectsByType<Cell>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Cell cell in allCells)
+        {
+            cell.buttonImage.color = Color.white;
+        }
+    }
    
 }
 
