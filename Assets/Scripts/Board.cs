@@ -217,7 +217,7 @@ public class Board : MonoBehaviour
         Move[] allMoves = FindObjectsByType<Move>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         foreach (Move move in allMoves)
         {
-            if (!firstSkipped && move.isPlayerDown == turnPlayer)
+            if (!firstSkipped && move.isPlayerDown == !turnPlayer)
             {
                 // Prvi delete za začetnega igralca nastavimo kot že porabljen
                 move.moveUsed = true;
