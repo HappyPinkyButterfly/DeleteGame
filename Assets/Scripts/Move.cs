@@ -12,14 +12,16 @@ public class Move : MonoBehaviour
     public void Awake()
     {
         board = GetComponentInParent<Board>();
-        isPlayerDown = transform.parent.name.Contains("TopEndStep");
+        isPlayerDown = transform.parent.name.Contains("TopMoveCell");
         moveButtonImage = GetComponent<Image>();
 
     }
     public void OnMoveClick()
     {
+       
+
         if (
-            !isPlayerDown == board.turnPlayer &&
+            !isPlayerDown==board.turnPlayer &&
             board.connectionTable.Count == 0 &&
             !board.deleteProccess &&
             !board.moveProccess &&

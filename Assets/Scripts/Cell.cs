@@ -164,7 +164,11 @@ public class Cell : MonoBehaviour
             return;
         }
 
-        else if (state.occupation == 1 && board.turnPlayer != state.symbolOwner && board.connectionTable.Count == 0)
+        else if (state.occupation == 1 &&
+                board.turnPlayer != state.symbolOwner &&
+                board.connectionTable.Count == 0  &&
+                !board.artTerProcess &&
+                !board.healProccess)
         {
             if (board.turnPlayer)
             {
@@ -213,40 +217,49 @@ public class Cell : MonoBehaviour
         }
     }
     private void CheckDirection(Vector2Int direction)
+{
+    Vector2Int currentPos = location;
+    
+    while (true)
     {
-        Vector2Int currentPos = location;
-        bool foundValidCell = false;
+        currentPos += direction;
         
-        while (!foundValidCell)
+        // Check if we're out of bounds
+        if (currentPos.x < 0 || currentPos.y < 0 || currentPos.x > 7 || currentPos.y > 7)
         {
-            currentPos += direction;
-            if (currentPos.x < 0 || currentPos.y < 0 || currentPos.x > 7 || currentPos.y > 7)
-            {
-                break;
-            }
-            Cell neighbor = board.GetCellAtPosition(currentPos);
-            Debug.Log(neighbor.location);
-            
-            // Če smo izven mreže ali naletimo na zasedeno celico (ki ni teren)
-            if (neighbor == null || (neighbor.state.occupation > 0 && neighbor.buttonImage.sprite != board.terrain))
-            {
-                break;
-            }
+            break;
+        }
+        
+        Cell neighbor = board.GetCellAtPosition(currentPos);
+        
+        // Skip if out of bounds
+        if (neighbor == null)
+        {
+            break;
+        }
 
-            // Če je celica teren, preskoči in nadaljuj iskanje
-            if (neighbor.buttonImage.sprite == board.terrain && neighbor.buttonImage.sprite == board.artTer)
-            {
-                continue;
-            }
-
-            // Če je celica prazna, dodaj med možne cilje
-            if (neighbor.state.occupation == 0)
-            {
+        // Check occupation state
+        switch (neighbor.state.occupation)
+        {
+            case 0: // Empty cell - valid target
+            case 5: // Healed cell - valid target
                 moveTable.Add(neighbor);
-                foundValidCell = true;
-            }
+                return; // Found a valid target, stop searching this direction
+            
+            case 1: // Basic symbol - blocking
+            case 2: // Origin symbol - blocking
+                return; // Hit a blocking cell, stop searching this direction
+            
+            case 3: // Terrain - pass through
+            case 4: // Artificial terrain - pass through
+                continue; // Keep searching in this direction
+            
+            default:
+                Debug.LogWarning($"Unknown occupation state: {neighbor.state.occupation}");
+                return;
         }
     }
+}
     private void HighlightSelection()
     {
             // Označi izbrano celico s svetlo zeleno

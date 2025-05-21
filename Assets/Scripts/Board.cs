@@ -212,6 +212,13 @@ public class Board : MonoBehaviour
         }
 
         // Resetiraj vse celice
+        Cell[] allCells = FindObjectsByType<Cell>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Cell cell in allCells)
+        {
+            cell.ResetCell();
+        }
+
+        // Resetiraj vse celice
         Heal [] allHeals = FindObjectsByType<Heal>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         foreach (Heal heal in allHeals)
         {

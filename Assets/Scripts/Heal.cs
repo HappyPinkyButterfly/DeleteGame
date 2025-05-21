@@ -12,7 +12,16 @@ public class Heal : MonoBehaviour
     public void Awake()
     {
         board = GetComponentInParent<Board>();
-        isPlayerDown = transform.parent.name.Contains("TopDestroy");
+        Transform[] allParents = GetComponentsInParent<Transform>(true);
+        isPlayerDown = false;
+        foreach (Transform parent in allParents)
+        {
+            if (parent.name.Contains("TopEndStep"))
+            {
+                isPlayerDown = true;
+                break;
+            }
+        }
         healButtonImage = GetComponent<Image>();
 
     }
@@ -39,6 +48,15 @@ public class Heal : MonoBehaviour
 
     public bool TerrainOnField()
     {
-        return true;
+        Cell[] allCells = FindObjectsByType<Cell>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Cell cell in allCells)
+        {
+            if (cell.state.occupation == 3)
+            {
+                return true;
+                
+            }
+        }
+        return false;
      }
 }

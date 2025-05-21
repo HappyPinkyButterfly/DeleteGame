@@ -12,7 +12,16 @@ public class ArtificialTerrain : MonoBehaviour
     public void Awake()
     {
         board = GetComponentInParent<Board>();
-        isPlayerDown = transform.parent.name.Contains("TopCreate");
+        Transform[] allParents = GetComponentsInParent<Transform>(true);
+        isPlayerDown = false;
+        foreach (Transform parent in allParents)
+        {
+            if (parent.name.Contains("TopEndStep"))
+            {
+                isPlayerDown = true;
+                break;
+            }
+        }
         artTerButtonImage = GetComponent<Image>();
 
     }
@@ -38,6 +47,14 @@ public class ArtificialTerrain : MonoBehaviour
     }
     public bool EmptyCellAvailable()
     {
-        return true;
+        Cell[] allCells = FindObjectsByType<Cell>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Cell cell in allCells)
+        {
+            if (cell.state.occupation == 0)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
