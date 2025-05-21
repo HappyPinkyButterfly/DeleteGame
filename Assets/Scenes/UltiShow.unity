@@ -1509,7 +1509,8 @@ MonoBehaviour:
   movePrefab: {fileID: 3585081678935206136, guid: c2a514d609670674eaf7eaeaffb1f536, type: 3}
   healPrefab: {fileID: 9219964059511904265, guid: 87e881635fcd58648a40b5562bd846f6, type: 3}
   artificialTerrainPrefab: {fileID: 1451693088495064245, guid: e385484b74796b9459f3e971f80606d9, type: 3}
-  artTerProcess: 0
+  artTer: {fileID: -3314928206708024494, guid: 7a4693b729d5ae94a87330de196c9219, type: 3}
+  healedCell: {fileID: -3082923099886209552, guid: 6ee98ded9ea959048b96dce5761646cf, type: 3}
 --- !u!114 &217610211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3858,7 +3859,7 @@ GameObject:
   - component: {fileID: 616374832}
   - component: {fileID: 616374831}
   m_Layer: 5
-  m_Name: Destroy
+  m_Name: TopDestroy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13019,7 +13020,7 @@ GameObject:
   - component: {fileID: 2010668426}
   - component: {fileID: 2010668425}
   m_Layer: 5
-  m_Name: Create
+  m_Name: TopCreate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -12,7 +12,7 @@ public class Move : MonoBehaviour
     public void Awake()
     {
         board = GetComponentInParent<Board>();
-        isPlayerDown = transform.parent.name.Contains("TopMoveCell");
+        isPlayerDown = transform.parent.name.Contains("TopEndStep");
         moveButtonImage = GetComponent<Image>();
 
     }
@@ -23,9 +23,9 @@ public class Move : MonoBehaviour
             board.connectionTable.Count == 0 &&
             !board.deleteProccess &&
             !board.moveProccess &&
+            !board.healProccess &&
+            !board.artTerProcess &&
             !moveUsed &&
-            !board.topFirstMove &&
-            !board.botFirstMove &&
             PlayerHasMovableSymbols()
         )
         {

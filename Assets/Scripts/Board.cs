@@ -67,6 +67,9 @@ public class Board : MonoBehaviour
     public ArtificialTerrain artificialTerrainPrefab;
     public bool artTerProcess { get; set; }
     public Sprite artTer;
+    public bool healProccess{ get; set; }
+
+    public Sprite healedCell;
 
     
 
@@ -209,10 +212,11 @@ public class Board : MonoBehaviour
         }
 
         // Resetiraj vse celice
-        Cell[] allCells = FindObjectsByType<Cell>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-        foreach (Cell cell in allCells)
+        Heal [] allHeals = FindObjectsByType<Heal>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Heal heal in allHeals)
         {
-            cell.ResetCell();
+            heal.healProccess = false;
+            heal.healButtonImage.color = Color.white;
         }
 
 

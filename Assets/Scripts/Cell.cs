@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using Photon.Pun.UtilityScripts;
 
 
 public class Cell : MonoBehaviour
@@ -28,11 +29,23 @@ public class Cell : MonoBehaviour
 
     public void CellClick()
     {
-        if (board.artTerProcess && this.state.occupation == 0)
+        if (board.healProccess && this.state.occupation == 3)
+        {
+            buttonImage.sprite = board.healedCell;
+            buttonImage.color = Color.white;
+            this.state.occupation = 5;
+            board.healProccess = false;
+            board.cellsInUse--;
+            board.turnPlayer = !board.turnPlayer;
+            return;
+        }
+        else if (board.artTerProcess && this.state.occupation == 0)
         {
             buttonImage.sprite = board.artTer;
             this.state.occupation = 4;
             board.artTerProcess = false;
+            board.cellsInUse++;
+            board.turnPlayer = !board.turnPlayer;
             return;
         }
         else if (board.moveProccess)
@@ -62,9 +75,9 @@ public class Cell : MonoBehaviour
         }
 
 
-        else if (!board.deleteProccess)
+        else if (!board.deleteProccess && !board.moveProccess && !board.artTerProcess && !board.healProccess )
         {
-            if (state.occupation == 0 && board.connectionTable.Count == 0)
+            if ((state.occupation == 0 || state.occupation == 5) && board.connectionTable.Count == 0)
             {
                 // Prvi potezi za obe strani
                 if (board.turnPlayer && board.topFirstMove)
@@ -201,7 +214,6 @@ public class Cell : MonoBehaviour
     }
     private void CheckDirection(Vector2Int direction)
     {
-        Debug.Log("Sem v check direction");
         Vector2Int currentPos = location;
         bool foundValidCell = false;
         
