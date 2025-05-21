@@ -70,13 +70,18 @@ public class Board : MonoBehaviour
     public bool healProccess{ get; set; }
 
     public Sprite healedCell;
+    public bool boardType;
+
+    public bool startStep;
 
     
 
 
     public void Start()
     {
-
+        startStep = true;
+        boardType = transform.Find("TopEndStep") != null;
+        Debug.Log(boardType);
         rows = GetComponentsInChildren<Row>();
         cells = GetComponentsInChildren<CellForPrefab>();
         for (int y = 0; y < rows.Length; y++)
@@ -161,7 +166,11 @@ public class Board : MonoBehaviour
             cell.state.occupation = 3;
         }
         connectionTable.Clear();
-        turnPlayer = !turnPlayer;
+        if (!boardType)
+        {
+            startStep = false;
+            turnPlayer = !turnPlayer;
+        }
 
     }
 

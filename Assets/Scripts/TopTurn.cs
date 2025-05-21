@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,7 +7,7 @@ public class TopTurn : MonoBehaviour
 {
     public Board board;
 
-    public Image imageTopTurn {get;set;}
+    public Image imageTopTurn { get; set; }
 
     private void Awake()
     {
@@ -15,19 +16,25 @@ public class TopTurn : MonoBehaviour
 
     public void Update()
     {
-        if(!board.turnPlayer && !board.deleteProccess)
+        if (!board.turnPlayer && !board.deleteProccess)
         {
             imageTopTurn.color = Color.green;
         }
         else if (!board.turnPlayer && board.deleteProccess)
         {
 
-           imageTopTurn.color = Color.yellow; 
+            imageTopTurn.color = Color.yellow;
         }
         else
         {
             ColorUtility.TryParseHtmlString("#A47A6B", out Color novaBarva);
             imageTopTurn.color = novaBarva;
         }
+
+    }
+
+    public void OnClick()
+    {
+        board.turnPlayer = !board.turnPlayer;
     }
 }

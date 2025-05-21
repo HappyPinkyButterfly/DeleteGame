@@ -5,7 +5,7 @@ public class BotTurn : MonoBehaviour
 {
     public Board board;
 
-    public Image imageBotTurn {get;set;}
+    public Image imageBotTurn { get; set; }
 
     private void Awake()
     {
@@ -14,18 +14,22 @@ public class BotTurn : MonoBehaviour
 
     public void Update()
     {
-        if(board.turnPlayer && !board.deleteProccess)
+        if (board.turnPlayer && !board.deleteProccess)
         {
             imageBotTurn.color = Color.green;
         }
         else if (board.turnPlayer && board.deleteProccess)
         {
-           imageBotTurn.color = Color.yellow; 
+            imageBotTurn.color = Color.yellow;
         }
         else
         {
             ColorUtility.TryParseHtmlString("#A47A6B", out Color novaBarva);
             imageBotTurn.color = novaBarva;
         }
+    }
+    public void OnClick()
+    {
+        board.turnPlayer = !board.turnPlayer;
     }
 }

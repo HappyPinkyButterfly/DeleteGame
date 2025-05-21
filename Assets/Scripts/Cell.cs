@@ -86,7 +86,10 @@ public class Cell : MonoBehaviour
                     state.symbolOwner = true;
                     state.occupation = 2;
                     board.topFirstMove = false;
-                    board.turnPlayer = !board.turnPlayer;
+                    if (!board.boardType)
+                    {
+                        board.turnPlayer = !board.turnPlayer;
+                    }
                     board.cellsInUse++;
                     return;
                 }
@@ -96,7 +99,10 @@ public class Cell : MonoBehaviour
                     state.symbolOwner = false;
                     state.occupation = 2;
                     board.botFirstMove = false;
-                    board.turnPlayer = !board.turnPlayer;
+                    if (!board.boardType)
+                    {
+                        board.turnPlayer = !board.turnPlayer;
+                    }
                     board.cellsInUse++;
 
                     return;
@@ -114,8 +120,11 @@ public class Cell : MonoBehaviour
                     state.symbolOwner = false;
                 }
                 state.occupation = 1;
-                board.turnPlayer = !board.turnPlayer;
                 board.cellsInUse++;
+                if (!board.boardType)
+                {
+                    board.turnPlayer = !board.turnPlayer;
+                }
 
             }
             else if ((state.occupation == 1 || state.occupation == 2) && board.turnPlayer == state.symbolOwner)
@@ -181,7 +190,10 @@ public class Cell : MonoBehaviour
                 //board.upDelete.HideUsedDelete();
             }
             state.occupation = 2;
-            board.turnPlayer = !board.turnPlayer;
+            if (!board.boardType)
+            {
+                board.turnPlayer = !board.turnPlayer;
+            }
             state.symbolOwner = !state.symbolOwner;
             board.deleteProccess = false;
         }
