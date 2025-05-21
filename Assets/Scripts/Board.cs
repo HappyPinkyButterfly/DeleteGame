@@ -168,8 +168,12 @@ public class Board : MonoBehaviour
         connectionTable.Clear();
         if (!boardType)
         {
-            startStep = false;
             turnPlayer = !turnPlayer;
+            
+        }
+        else
+        {
+            startStep = false;
         }
 
     }
@@ -204,6 +208,7 @@ public class Board : MonoBehaviour
         botFirstMove = true;
         connectionTable.Clear();
         deleteProccess = false;
+        startStep = true;
         cellsInUse = 0;
         SetSymbolsFromManager();
         Move[] allMoves = FindObjectsByType<Move>(FindObjectsInactive.Include, FindObjectsSortMode.None);
@@ -283,7 +288,8 @@ public class Board : MonoBehaviour
     {
         moveProccess = false;
         selectedCellForMove = null;
-        turnPlayer = !turnPlayer; 
+        turnPlayer = !turnPlayer;
+        startStep = true;
     }
 
    

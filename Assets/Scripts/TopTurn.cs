@@ -36,5 +36,6 @@ public class TopTurn : MonoBehaviour
     public void OnClick()
     {
         board.turnPlayer = !board.turnPlayer;
+        board.startStep = true;
     }
 }

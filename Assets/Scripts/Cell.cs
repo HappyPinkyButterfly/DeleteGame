@@ -37,6 +37,7 @@ public class Cell : MonoBehaviour
             board.healProccess = false;
             board.cellsInUse--;
             board.turnPlayer = !board.turnPlayer;
+            board.startStep = true;
             return;
         }
         else if (board.artTerProcess && this.state.occupation == 0)
@@ -46,6 +47,7 @@ public class Cell : MonoBehaviour
             board.artTerProcess = false;
             board.cellsInUse++;
             board.turnPlayer = !board.turnPlayer;
+            board.startStep = true;
             return;
         }
         else if (board.moveProccess)
@@ -75,8 +77,12 @@ public class Cell : MonoBehaviour
         }
 
 
-        else if (!board.deleteProccess && !board.moveProccess && !board.artTerProcess && !board.healProccess )
-        {
+        else if (!board.deleteProccess &&
+                !board.moveProccess &&
+                !board.artTerProcess &&
+                !board.healProccess &&
+                board.startStep)
+            {
             if ((state.occupation == 0 || state.occupation == 5) && board.connectionTable.Count == 0)
             {
                 // Prvi potezi za obe strani
@@ -89,6 +95,11 @@ public class Cell : MonoBehaviour
                     if (!board.boardType)
                     {
                         board.turnPlayer = !board.turnPlayer;
+                        
+                    }
+                    else
+                    {
+                        board.startStep = false;
                     }
                     board.cellsInUse++;
                     return;
@@ -102,6 +113,11 @@ public class Cell : MonoBehaviour
                     if (!board.boardType)
                     {
                         board.turnPlayer = !board.turnPlayer;
+                        
+                    }
+                    else
+                    {
+                        board.startStep = false;
                     }
                     board.cellsInUse++;
 
@@ -124,6 +140,11 @@ public class Cell : MonoBehaviour
                 if (!board.boardType)
                 {
                     board.turnPlayer = !board.turnPlayer;
+                    
+                }
+                else
+                {
+                    board.startStep = false;
                 }
 
             }
@@ -164,7 +185,7 @@ public class Cell : MonoBehaviour
                 }
             }
         }
-        else if (state.occupation == 0 && board.deleteProccess)
+        else if (state.occupation == 0 && board.deleteProccess && board.startStep)
         {
             // popravi problem kjer ce si kluknil na delete, pocakal malo, 
             // kliknil prazno cell, pocakal malo in kliknil legal target,
@@ -177,7 +198,8 @@ public class Cell : MonoBehaviour
                 board.turnPlayer != state.symbolOwner &&
                 board.connectionTable.Count == 0  &&
                 !board.artTerProcess &&
-                !board.healProccess)
+                !board.healProccess &&
+                board.startStep)
         {
             if (board.turnPlayer)
             {
@@ -193,6 +215,11 @@ public class Cell : MonoBehaviour
             if (!board.boardType)
             {
                 board.turnPlayer = !board.turnPlayer;
+                
+            }
+            else
+            {
+                board.startStep = false;
             }
             state.symbolOwner = !state.symbolOwner;
             board.deleteProccess = false;
