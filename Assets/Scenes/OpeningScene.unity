@@ -439,14 +439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e0ad357f55604941a175d82583ff6fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  presentedBy: {fileID: 2092299524}
   logo: {fileID: 745393830}
-  ticTacToeText: {fileID: 1445338871}
-  deleteText: {fileID: 476825490}
-  logoFadeInTime: 1.5
-  logoDisplayTime: 2
-  titleDelay: 0.5
-  deleteFadeInTime: 3
 --- !u!1 &669657679
 GameObject:
   m_ObjectHideFlags: 0
