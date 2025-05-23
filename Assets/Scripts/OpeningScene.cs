@@ -22,7 +22,7 @@ public class OpeningScene : MonoBehaviour {
 
         // 5. Naloži glavni meni
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("LoadToMainMenu");
+        SceneManager.LoadScene("MainMenu");
     }
 
     // Pomožna funkcija za fade CanvasGroup (za logo + presented by)

@@ -28,6 +28,7 @@ public class Move : MonoBehaviour
             !board.healProccess &&
             !board.artTerProcess &&
             !moveUsed &&
+            !board.startStep &&
             PlayerHasMovableSymbols()
         )
         {

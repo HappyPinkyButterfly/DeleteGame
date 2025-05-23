@@ -35,7 +35,16 @@ public class TopTurn : MonoBehaviour
 
     public void OnClick()
     {
-        board.turnPlayer = !board.turnPlayer;
-        board.startStep = true;
+        if (!board.deleteProccess &&
+            !board.moveProccess &&
+            !board.healProccess &&
+            !board.artTerProcess &&
+            !board.startStep
+         )
+        {
+            board.turnPlayer = !board.turnPlayer;
+            board.startStep = true;
+        }
+        
     }
 }
