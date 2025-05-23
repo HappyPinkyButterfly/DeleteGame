@@ -515,7 +515,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: MainMenu
+          m_StringArgument: RulesPage2
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1464640073
@@ -705,13 +705,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "1. Original Mode\n\r\r\nOn your turn, choose ONE action:\r\n\r\nActions\n\r\n1.)
-    Place - Put a BASIC Symbol on any empty, non-terrain cell.\r\r\n\r\n2.) Delete
-    - Target an opponents BASIC Symbol, replace it with your ORIGIN Symbol.\r\n\r\nStart
-    with 5 Deletes. Regain 1 used Delete per claimed connection.\r\n\r\n3.) Connection
-    - Requirement: Have 3+ aligned symbols (any mix of Basic/Origin).\n\nSpend a
-    turn to gain VP, recover 1 delete and convert the connection cells into terrain.\n\nSymbols
-    cannot be placed on the terrain.\r\n\r\n\n"
+  m_text: "3. Ultimate Showdown\n\r\nThe complete experience with advanced actions.\r\n\r\nTurn
+    Structure\r\nStart Step: Mandatory ONE action (Place/Delete/Connect).\r\n\r\nEnd
+    Step: Optional ONE action (Move/Heal/Terrain) or pass.\n\nBoth players start
+    with 3 moves, 1 heal and one terrain, minus one move for the starting player\r\n\r\nNew
+    Actions\r\r\n\r\nHeal - Remove one non-artificial terrain tile, restoring it
+    to an empty healed cell.\nCannot be artificial terrained until reoccupied.\r\n\r\nArtificial
+    Terrain - Place artificial terrain on any empty, non-healed cell.\r\n\r\nHealed
+    Cells: Cannot be terraformed until reoccupied.\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -738,8 +739,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
-  m_fontSizeBase: 45
+  m_fontSize: 42
+  m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -875,14 +876,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 655982576}
         m_TargetAssemblyTypeName: SceneManagerScript, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
+        m_MethodName: LoadScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: RulesPage2
+          m_StringArgument: RulesPage4
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1771047979
@@ -1278,9 +1279,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Main
+  m_text: 'Previous
 
-    Menu'
+    Page'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
