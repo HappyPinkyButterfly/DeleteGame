@@ -10,7 +10,9 @@ public class TopEndStep : MonoBehaviour
 
     private void Awake()
     {
+        
         moveCells = GetComponentsInChildren<MoveCell>();
+        Debug.Log($"Found {moveCells.Length} move cells in TopEndStep");
         foreach (MoveCell moveCell in moveCells)
         {
             Move move = Instantiate(board.movePrefab, moveCell.transform);

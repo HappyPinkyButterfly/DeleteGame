@@ -30,11 +30,17 @@ EditorBuildSettings:
     path: Assets/Scenes/LoadToGame.unity
     guid: c263bc77f4dc3c748b4d7c47cbcd3e19
   - enabled: 1
+    path: Assets/Scenes/LoadMoveHe.unity
+    guid: c3e2dbb64a59a7c4fa4e0fac18a953b9
+  - enabled: 1
     path: Assets/Scenes/RulesPage4.unity
     guid: 82673c063a3c2e748b9a2d14147067ac
   - enabled: 1
     path: Assets/Scenes/RulesPage5.unity
     guid: 3efb0d9f826839b4ab409a8c80cff744
+  - enabled: 1
+    path: Assets/Scenes/MovingHeaven.unity
+    guid: 5bc78027aba0f6f4ab64f52a07bca0c6
   - enabled: 1
     path: Assets/Scenes/UltiShow.unity
     guid: 3ef11ec53bba9cb4b91a77b8bb866981
