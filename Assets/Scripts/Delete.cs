@@ -40,6 +40,7 @@ public class Delete : MonoBehaviour
         && !deleteUsed
         && !board.topFirstMove
         && !board.botFirstMove
+        && board.startStep
         && board.EnemyHasNormalSymbol())
         {
             board.deleteProccess = true;
