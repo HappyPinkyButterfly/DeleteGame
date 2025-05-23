@@ -29,7 +29,7 @@ public class Cell : MonoBehaviour
 
     public void CellClick()
     {
-        if (board.healProccess && this.state.occupation == 3)
+        if (board.healProccess && this.state.occupation == 3 && !board.startStep )
         {
             buttonImage.sprite = board.healedCell;
             buttonImage.color = Color.white;
@@ -41,7 +41,7 @@ public class Cell : MonoBehaviour
             ResetTerrainAlpha();
             return;
         }
-        else if (board.artTerProcess && this.state.occupation == 0)
+        else if (board.artTerProcess && this.state.occupation == 0 && !board.startStep)
         {
             buttonImage.sprite = board.artTer;
             this.state.occupation = 4;
@@ -52,7 +52,7 @@ public class Cell : MonoBehaviour
             ClearHighlightsArtTer();
             return;
         }
-        else if (board.moveProccess)
+        else if (board.moveProccess && !board.startStep)
         {
             if (board.selectedCellForMove == null)
             {

@@ -38,6 +38,7 @@ public class Heal : MonoBehaviour
             !board.healProccess &&
             !board.artTerProcess &&
             !healUsed &&
+            !board.startStep &&
             TerrainOnField()
         )
         {

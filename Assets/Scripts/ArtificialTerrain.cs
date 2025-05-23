@@ -37,6 +37,7 @@ public class ArtificialTerrain : MonoBehaviour
              !board.healProccess &&
              !board.artTerProcess &&
              !artTerUsed &&
+             !board.startStep &&
              EmptyCellAvailable()
 
          )
