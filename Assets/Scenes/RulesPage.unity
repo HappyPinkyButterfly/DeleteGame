@@ -322,7 +322,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 900}
-  m_SizeDelta: {x: 400, y: 50}
+  m_SizeDelta: {x: 900, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &771342096
 MonoBehaviour:
@@ -344,7 +344,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Rules
+  m_text: Game Overview
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -682,8 +682,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 100}
-  m_SizeDelta: {x: 900, y: 800}
+  m_AnchoredPosition: {x: 0, y: 50}
+  m_SizeDelta: {x: 900, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1714844667
 MonoBehaviour:
@@ -705,15 +705,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Objective:\n\r\nBe the first player to earn 5 Victory Points by strategically
-    placing symbols, disrupting your opponent with the Delete action, and forming
-    connections on an 8\xD78 grid.\n\nKey Improvements from Original Design:\n\r\n1.)
-    Player Interaction: \nThe Delete mechanic was added to prevent passive play,
-    allowing you to convert opponent symbols into your indestructible Origin Symbols.\r\n\r\n2.)
-    Balanced Connections:\nForming a line of 3 no longer awards instant Victory Points,
-    you must spend a turn to \"claim\" the connection, giving opponents a chance
-    to interfere.\n\nTurn Structure:\n\r\nOn your turn, choose one of the following
-    actions:\n\n"
+  m_text: "1. Original Mode\n\r\r\nOn your turn, choose ONE action:\r\n\r\nActions\n\r\n1.)
+    Place - Put a BASIC Symbol on any empty, non-terrain cell.\r\r\n\r\n2.) Delete
+    - Target an opponents BASIC Symbol, replace it with your ORIGIN Symbol.\r\n\r\nStart
+    with 5 Deletes. Regain 1 used Delete per claimed connection.\r\n\r\n3.) Connection
+    - Requirement: Have 3+ aligned symbols (any mix of Basic/Origin).\n\nSpend a
+    turn to gain VP, recover 1 delete and convert the connection cells into terrain.\n\nSymbols
+    cannot be placed on the terrain.\r\n\r\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -740,8 +738,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
