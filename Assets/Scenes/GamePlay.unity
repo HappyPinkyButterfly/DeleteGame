@@ -2456,6 +2456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   board: {fileID: 1646754274}
+  victoryImage: {fileID: 771233351}
   pointsToWin: 5
   gameOverScreen: {fileID: 1940291177}
 --- !u!4 &1141679292
