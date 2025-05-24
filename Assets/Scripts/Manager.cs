@@ -6,7 +6,7 @@ public class Manager : MonoBehaviour
 {
     public Board board;
 
-    private Image victoryImage;
+    public Image victoryImage;
 
     public int pointsToWin = 5;
 
