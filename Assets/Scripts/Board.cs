@@ -250,7 +250,7 @@ public class Board : MonoBehaviour
         Heal[] allHeals = FindObjectsByType<Heal>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         foreach (Heal heal in allHeals)
         {
-            heal.healProccess = false;
+            heal.healUsed = false;
             heal.healButtonImage.color = Color.white;
         }
 
