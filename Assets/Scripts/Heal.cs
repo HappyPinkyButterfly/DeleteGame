@@ -29,7 +29,6 @@ public class Heal : MonoBehaviour
 
     public void OnClickHeal()
     {
-        Debug.Log(!isPlayerDown + "  /  " + board.turnPlayer);
         if (
             !isPlayerDown == board.turnPlayer &&
             board.connectionTable.Count == 0 &&
@@ -46,8 +45,6 @@ public class Heal : MonoBehaviour
             healUsed = true;
             healButtonImage.color = Color.clear;
             HighlightTerrainCells();
-            
-        
         }
     }
 

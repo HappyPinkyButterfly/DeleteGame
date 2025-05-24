@@ -41,5 +41,6 @@ public class BotTurn : MonoBehaviour
             board.turnPlayer = !board.turnPlayer;
             board.startStep = true;
         }
+        
     }
 }
