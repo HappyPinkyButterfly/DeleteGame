@@ -1,7 +1,5 @@
-using System.Collections;
-using Photon.Pun.UtilityScripts;
+
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Delete : MonoBehaviour

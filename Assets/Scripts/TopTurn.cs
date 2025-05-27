@@ -9,9 +9,12 @@ public class TopTurn : MonoBehaviour
 
     public Image imageTopTurn { get; set; }
 
+    public TopEndStep topEndStep { get; set; }
+
     private void Awake()
     {
         imageTopTurn = GetComponent<Image>();
+        topEndStep = board.GetComponentInChildren<TopEndStep>();
     }
 
     public void Update()
@@ -29,6 +32,20 @@ public class TopTurn : MonoBehaviour
         {
             ColorUtility.TryParseHtmlString("#A47A6B", out Color novaBarva);
             imageTopTurn.color = novaBarva;
+        }
+        if (board.boardType)
+        {
+            if (!board.startStep
+            && topEndStep.AreCurrentPlayerActionsUsed()
+            && !board.moveProccess
+            && !board.healProccess
+            && !board.artTerProcess
+            && !board.turnPlayer
+            )
+            {
+                board.turnPlayer = !board.turnPlayer;
+                board.startStep = true;
+            }
         }
 
     }
