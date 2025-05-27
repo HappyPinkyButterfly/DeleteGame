@@ -707,18 +707,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'End of Game Condition
-
-
-    If all cells are filled with symbols or terrain,
-    the game ends.
-
-
-    The player with the most Victory Points wins.
-
-
-    Draw
-    if tied.'
+  m_text: "END OF GAME CONDITION\n\nIf all cells are filled with symbols or terrain,
+    the game ends.\n\nThe player with the most Victory Points wins.\n\nDraw if tied.\n\nTURN
+    MARKER\n\r\nGreen Marker:\r\n\r\n\t-I ndicates your main move phase\r\n\t- You
+    must play Start Step Move\r\n\r\nYellow Marker:\r\n\r\n\t- Indicates your end-step
+    move phase\r\n\r\t- Play an available End Step Move\r\n\t- Click the marker to
+    manually \n\t  pass the turn.\r\n\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -745,8 +739,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

@@ -708,13 +708,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "3. Ultimate Showdown\n\r\nThe complete experience with advanced actions.\r\n\r\nTurn
-    Structure\r\nStart Step: Mandatory ONE action (Place/Delete/Connect).\r\n\r\nEnd
-    Step: Optional ONE action (Move/Heal/Terrain) or pass.\n\nBoth players start
-    with 3 moves, 1 heal and one terrain, minus one move for the starting player\r\r\r\n\r\nHeal
+  m_text: "3. ULTIMATE SHOWDOWN\n\r\nThe complete experience with advanced actions.\r\n\r\nTurn
+    Structure\r\nSTART STEP: Mandatory ONE action (Place/Delete/Connect).\r\n\r\nEND
+    STEP: Optional ONE action (Move/Heal/Terrain) or pass.\n\nBoth players start
+    with 3 moves, 1 heal and one terrain, minus one move for the starting player\r\r\r\n\r\nHEAL
     - Remove one non-artificial terrain tile, restoring it to an empty healed cell.\nCannot
-    be artificial terrained until reoccupied.\r\n\r\nArtificial Terrain - Place artificial
-    terrain on any empty, non-healed cell.\r\n\r\nHealed Cells: Cannot be terraformed
+    be artificial terrained until reoccupied.\r\n\r\nARTIFICIAL TERRAIN - Place artificial
+    terrain on any empty, non-healed cell.\r\n\r\nHEALED CELLS: Cannot be terraformed
     until reoccupied.\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

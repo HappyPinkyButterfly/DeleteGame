@@ -708,7 +708,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '2. Moving Legends
+  m_text: '2. MOVING LEGENDS
 
 
     Adds tactical movement to Original Mode, with
@@ -732,7 +732,7 @@ MonoBehaviour:
     end your turn by clicking turn marker.
 
 
-    Move - Slide one of your symbols
+    MOVE - Slide one of your symbols
     1 space in any direction to an empty cell, ignoring terrain cells if they are
     between an empty cell and your symbol.
 

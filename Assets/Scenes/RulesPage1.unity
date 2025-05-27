@@ -708,10 +708,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "1. Original Mode\n\r\r\nOn your turn, choose ONE action:\r\n\r\n1.) Place
-    - Put a BASIC Symbol on any empty, non-terrain cell.\r\r\n\r\n2.) Delete - Target
+  m_text: "1. ORIGINAL\n\r\r\nOn your turn, choose ONE action:\r\n\r\n1.) PLACE -
+    Put a BASIC Symbol on any empty, non-terrain cell.\r\r\n\r\n2.) DELETE - Target
     an opponents BASIC Symbol, replace it with your ORIGIN Symbol.\r\n\r\nStart with
-    5 Deletes. Regain 1 used Delete per claimed connection.\r\n\r\n3.) Connect -
+    5 Deletes. Regain 1 used Delete per claimed connection.\r\n\r\n3.) CONNECT -
     Requirement: Have 3+ aligned symbols (any mix of Basic/Origin).\n\nSpend a turn
     to gain VP, recover 1 delete and convert the connection cells into terrain.\n\nSymbols
     cannot be placed on the terrain.\r\n\r\n\n"
