@@ -30,8 +30,7 @@ public class TopTurn : MonoBehaviour
         }
         else
         {
-            ColorUtility.TryParseHtmlString("#A47A6B", out Color novaBarva);
-            imageTopTurn.color = novaBarva;
+            imageTopTurn.color = Color.clear;
         }
         if (board.boardType)
         {

@@ -22,13 +22,11 @@ public class BotTurn : MonoBehaviour
         }
         else if (board.turnPlayer && board.startStep)
         {
-
             imageBotTurn.color = Color.green;
         }
         else
         {
-            ColorUtility.TryParseHtmlString("#A47A6B", out Color novaBarva);
-            imageBotTurn.color = novaBarva;
+            imageBotTurn.color = Color.clear;
         }
         if (board.boardType)
         {
