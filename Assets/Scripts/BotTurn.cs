@@ -7,6 +7,8 @@ public class BotTurn : MonoBehaviour
 
     public Image imageBotTurn {get;set;}
     public BotEndStep botEndStep {get;set;}
+    public Sprite greenButton;
+    public Sprite yellowButton;
 
     private void Awake()
     {
@@ -18,11 +20,13 @@ public class BotTurn : MonoBehaviour
     {
         if (board.turnPlayer && !board.startStep)
         {
-            imageBotTurn.color = Color.yellow;
+            imageBotTurn.sprite = yellowButton;
+            imageBotTurn.color = Color.white;
         }
         else if (board.turnPlayer && board.startStep)
         {
-            imageBotTurn.color = Color.green;
+            imageBotTurn.sprite = greenButton;
+            imageBotTurn.color = Color.white;
         }
         else
         {

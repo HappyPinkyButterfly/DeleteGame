@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 675d3ff9a0a956a43a199f7aa75f4e29
+guid: 9588bd72655003548aca541ca89c66aa
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6000045435452376664
-    second: DeleteAppIcon_0
+      213: 5547472617992246012
+    second: VP2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DeleteAppIcon_0
+      name: VP2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1024
-        height: 1024
+        x: 123
+        y: 129
+        width: 394
+        height: 386
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 856c750b881744350800000000000000
-      internalID: 6000045435452376664
+      spriteID: cf252ac44f49cfc40800000000000000
+      internalID: 5547472617992246012
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      DeleteAppIcon_0: 6000045435452376664
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

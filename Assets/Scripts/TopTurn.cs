@@ -11,6 +11,9 @@ public class TopTurn : MonoBehaviour
 
     public TopEndStep topEndStep { get; set; }
 
+    public Sprite greenButton;
+    public Sprite yellowButton;
+
     private void Awake()
     {
         imageTopTurn = GetComponent<Image>();
@@ -21,12 +24,14 @@ public class TopTurn : MonoBehaviour
     {
         if (!board.turnPlayer && !board.startStep)
         {
-            imageTopTurn.color = Color.yellow;
+            imageTopTurn.sprite = yellowButton;
+            imageTopTurn.color = Color.white;
         }
         else if (!board.turnPlayer && board.startStep)
         {
 
-            imageTopTurn.color = Color.green;
+            imageTopTurn.sprite = greenButton;
+            imageTopTurn.color = Color.white;
         }
         else
         {

@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 675d3ff9a0a956a43a199f7aa75f4e29
+guid: f65e1e1660b80744e8139b1e4de7da2a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6000045435452376664
-    second: DeleteAppIcon_0
+      213: -2109583629960870927
+    second: ea5dcba5-bba6-42cb-86e9-d856bcc98f5b_0
+  - first:
+      213: 8910913487738315286
+    second: ea5dcba5-bba6-42cb-86e9-d856bcc98f5b_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DeleteAppIcon_0
+      name: ea5dcba5-bba6-42cb-86e9-d856bcc98f5b_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1024
-        height: 1024
+        x: 176
+        y: 246
+        width: 598
+        height: 107
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +131,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 856c750b881744350800000000000000
-      internalID: 6000045435452376664
+      spriteID: 1f304389dd049b2e0800000000000000
+      internalID: -2109583629960870927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ea5dcba5-bba6-42cb-86e9-d856bcc98f5b_1
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 124
+        width: 602
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61221e4ea9ce9ab70800000000000000
+      internalID: 8910913487738315286
       vertices: []
       indices: 
       edges: []
@@ -148,7 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      DeleteAppIcon_0: 6000045435452376664
+      ea5dcba5-bba6-42cb-86e9-d856bcc98f5b_0: -2109583629960870927
+      ea5dcba5-bba6-42cb-86e9-d856bcc98f5b_1: 8910913487738315286
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

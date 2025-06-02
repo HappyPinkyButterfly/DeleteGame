@@ -1,30 +1,30 @@
 
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 
 public class TopScoreBoard : MonoBehaviour
 {
-    public Board board;
 
     private Point[] points;
 
-    private Color victoryPointColor;
+    public Sprite vp;
 
-    public int victoryPoints{get;set;}
+    public int victoryPoints { get; set; }
 
     private void Awake()
 
     {
         points = GetComponentsInChildren<Point>();
-        victoryPointColor = Color.white;
         victoryPoints = 0;
     }
 
     public void AddVictoryPointTop()
     {
-        
-        for(int i = 0; i <= victoryPoints; i++)
+
+        for (int i = 0; i <= victoryPoints; i++)
         {
-            points[i].targetImage.color = victoryPointColor;
+            points[i].targetImage.sprite = vp;
+            points[i].targetImage.color = Color.white;
         }
         victoryPoints++;
     }
@@ -34,8 +34,8 @@ public class TopScoreBoard : MonoBehaviour
         Point[] points = GetComponentsInChildren<Point>();
         foreach (Point point in points)
         {
-            ColorUtility.TryParseHtmlString("#DBC8AA", out Color novaBarva);
-            point.targetImage.color = novaBarva;
+
+            point.targetImage.color = Color.clear;
         }
     }
 
