@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
-using UnityEditor;
 
 public class Board : MonoBehaviour
 {

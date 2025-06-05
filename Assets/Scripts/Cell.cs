@@ -3,7 +3,6 @@ using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using Photon.Pun.UtilityScripts;
 
 
 public class Cell : MonoBehaviour
