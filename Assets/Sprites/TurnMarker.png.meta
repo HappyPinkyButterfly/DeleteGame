@@ -222,7 +222,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      TurnMarker_0: -7714705421585550231
+      TurnMarker_1: 6458507992237654568
+      TurnMarker_2: -4434083540817506170
+      TurnMarker_3: -3853572154683827239
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
