@@ -1,12 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
-using UnityEditor.VisionOS;
 
 public class Board : MonoBehaviour
 {
     public bool turnPlayer { get; set; }
-    // true je zgornji - 1, false je spodnji - 2
     public Sprite basicSymP1;
     public Sprite basicSymP2;
 
