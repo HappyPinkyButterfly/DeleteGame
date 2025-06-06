@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
+using UnityEditor.VisionOS;
 
 public class Board : MonoBehaviour
 {
@@ -72,6 +73,8 @@ public class Board : MonoBehaviour
     public bool boardType;
 
     public bool startStep;
+    public TopEndStep topEndStep;
+    public BotEndStep botEndStep;
 
 
 
@@ -226,9 +229,9 @@ public class Board : MonoBehaviour
             else
             {
                 move.moveUsed = false;
-                move.moveButtonImage.color = Color.white; 
+                move.moveButtonImage.color = Color.white;
             }
-                
+
         }
 
         ArtificialTerrain[] allArtTer = FindObjectsByType<ArtificialTerrain>(FindObjectsInactive.Include, FindObjectsSortMode.None);
@@ -301,34 +304,76 @@ public class Board : MonoBehaviour
     {
         moveProccess = false;
         selectedCellForMove = null;
-        turnPlayer = !turnPlayer;
-        startStep = true;
+        topTurn.SwitchTurn();
     }
 
     public void CancelDeleteProcess()
     {
+        if (deleteProccess)
+        { 
+            if (!turnPlayer)
+            {
+                Delete[] allDeletes = upDelete.GetComponentsInChildren<Delete>();
+                foreach (Delete delete in allDeletes)
+                {
+                    if (delete.deleteUsed)
+                    {
+                        delete.ResetDelete();
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                Delete[] allDeletes = botDelete.GetComponentsInChildren<Delete>();
+                foreach (Delete delete in allDeletes)
+                {
+                    if (delete.deleteUsed)
+                    {
+                        delete.ResetDelete();
+                        break;
+                    }
+                }
+            }
         deleteProccess = false;
-
-        // Clear all highlights
-        Cell[] allCells = FindObjectsByType<Cell>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-        foreach (Cell cell in allCells)
-        {
-            cell.buttonImage.color = Color.white;
         }
+        
     }
     public void CancelMoveProcess()
     {
+        if (moveProccess)
+        {
+            if (!turnPlayer)
+            {
+                Move[] allMoves = topEndStep.GetComponentsInChildren<Move>();
+                foreach (Move move in allMoves)
+                {
+                    if (move.moveUsed)
+                    {
+                        move.moveUsed = false;
+                        move.moveButtonImage.color = Color.white;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                Move[] allMoves = botEndStep.GetComponentsInChildren<Move>();
+                foreach (Move move in allMoves)
+                {
+                    if (move.moveUsed)
+                    {
+                        move.moveUsed = false;
+                        move.moveButtonImage.color = Color.white;
+                        break;
+                    }
+                }
+            }
         moveProccess = false;
         selectedCellForMove = null;
-
-        // Clear all highlights
-        Cell[] allCells = FindObjectsByType<Cell>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-        foreach (Cell cell in allCells)
-        {
-            cell.buttonImage.color = Color.white;
         }
     }
-    
+
     public void CancelProcess()
     {
 
@@ -338,6 +383,141 @@ public class Board : MonoBehaviour
             cell.buttonImage.color = Color.white;
         }
     }
+
+    public void CancelHealProcess()
+    {
+        if (healProccess)
+        {
+            if (!turnPlayer)
+            {
+                Heal[] allHeals = topEndStep.GetComponentsInChildren<Heal>();
+                foreach (Heal heal in allHeals)
+                {
+                    if (heal.healUsed)
+                    {
+                        heal.healUsed = false;
+                        heal.healButtonImage.color = Color.white;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                Heal[] allHeals = botEndStep.GetComponentsInChildren<Heal>();
+                foreach (Heal heal in allHeals)
+                {
+                    if (heal.healUsed)
+                    {
+                        heal.healUsed = false;
+                        heal.healButtonImage.color = Color.white;
+                        break;
+                    }
+                }
+            }
+            healProccess = false;    
+        }
+        
+    }
+    public void CancelArtTerrProcess()
+    {
+        if (artTerProcess)
+        {
+            if (!turnPlayer)
+        {
+            ArtificialTerrain[] allArtTer = topEndStep.GetComponentsInChildren<ArtificialTerrain>();
+            foreach (ArtificialTerrain artTer in allArtTer)
+            {
+                if (artTer.artTerUsed)
+                {
+                    artTer.artTerUsed = false;
+                    artTer.artTerButtonImage.color = Color.white;
+                    break;
+                }
+            }
+        }
+        else
+        {
+            ArtificialTerrain[] allArtTer = botEndStep.GetComponentsInChildren<ArtificialTerrain>();
+            foreach (ArtificialTerrain artTer in allArtTer)
+            {
+                if (artTer.artTerUsed)
+                {
+                    artTer.artTerUsed = false;
+                    artTer.artTerButtonImage.color = Color.white;
+                    break;
+                }
+            }
+        }
+        artTerProcess = false;    
+        }
+        
+    }
+
+    public void CancelAllProcesses()
+    {
+        // Prekličemo vse procese
+        CancelDeleteProcess();
+        CancelMoveProcess();
+        CancelHealProcess();
+        CancelArtTerrProcess();
+
+        // Počistimo vse oznake
+        CancelProcess();
+    }
+    
+    private void ResetActionButtons()
+    {
+        if (turnPlayer && moveProccess)
+        {
+            Move[] allMoves = topEndStep.GetComponentsInChildren<Move>();
+            foreach (Move move in allMoves)
+            {
+                    if (move.isPlayerDown == !turnPlayer) // Samo za trenutnega igralca
+                    {
+                        move.moveUsed = false;
+                        move.moveButtonImage.color = Color.white;
+                        break;
+                    }
+            }
+        }
+        
+        
+        // Ponastavimo vse Delete gumbe
+        Delete[] allDeletes = FindObjectsByType<Delete>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Delete delete in allDeletes)
+        {
+                if (delete.isPlayerDown == !turnPlayer) // Samo za trenutnega igralca
+                {
+                    delete.ResetDelete();
+                    break;
+                }
+        }
+        
+        // Ponastavimo vse Heal gumbe
+        Heal[] allHeals = FindObjectsByType<Heal>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Heal heal in allHeals)
+        {
+                if (heal.isPlayerDown == !turnPlayer) // Samo za trenutnega igralca
+                {
+                    heal.healUsed = false;
+                    heal.healButtonImage.color = Color.white;
+                    break;
+                }
+        }
+        
+        // Ponastavimo vse ArtificialTerrain gumbe
+        ArtificialTerrain[] allArtTers = FindObjectsByType<ArtificialTerrain>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (ArtificialTerrain artTer in allArtTers)
+        {
+                if (artTer.isPlayerDown == !turnPlayer) // Samo za trenutnega igralca
+                {
+                    artTer.artTerUsed = false;
+                    artTer.artTerButtonImage.color = Color.white;
+                    break;
+                }
+        }
+    }
+
    
 }
 

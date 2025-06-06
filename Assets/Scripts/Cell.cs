@@ -16,10 +16,12 @@ public class Cell : MonoBehaviour
     public Image buttonImage { get; set; }
     public Vector2Int location { get; set; }
     public List<Cell> moveTable { get; set; } = new List<Cell>();
+    public TopTurn topTurn { get; set; }
 
     public void Awake()
     {
         board = FindFirstObjectByType<Board>();
+        topTurn = FindFirstObjectByType<TopTurn>();
         buttonImage = GetComponent<Image>();
         buttonImage.sprite = board.emptyCell;
         state = gameObject.AddComponent<CellState>();
@@ -35,8 +37,7 @@ public class Cell : MonoBehaviour
             this.state.occupation = 5;
             board.healProccess = false;
             board.cellsInUse--;
-            board.turnPlayer = !board.turnPlayer;
-            board.startStep = true;
+            topTurn.SwitchTurn();
             ResetTerrainAlpha();
             return;
         }
@@ -46,25 +47,28 @@ public class Cell : MonoBehaviour
             this.state.occupation = 4;
             board.artTerProcess = false;
             board.cellsInUse++;
-            board.turnPlayer = !board.turnPlayer;
-            board.startStep = true;
+            topTurn.SwitchTurn();
             ClearHighlightsArtTer();
             return;
         }
         else if (board.moveProccess && !board.startStep)
+{
+    if (board.selectedCellForMove == null)
+    {
+        if (this.state.symbolOwner == board.turnPlayer &&
+            (this.state.occupation == 1 || this.state.occupation == 2))
         {
-            if (board.selectedCellForMove == null)
+            // Najprej preveri ali ima ta znak vsaj en veljaven premik
+            FindPossibleMoves();
+            if (moveTable.Count > 0) // Samo če ima vsaj eno prazno celico
             {
-                if (this.state.symbolOwner == board.turnPlayer &&
-                    (this.state.occupation == 1 || this.state.occupation == 2))
-                {
-                    ClearAllMoveHighlights();
-                    board.selectedCellForMove = this;
-                    FindPossibleMoves();
-                    HighlightSelection();
-                }
-                return;
+                ClearAllMoveHighlights();
+                board.selectedCellForMove = this;
+                HighlightSelection();
             }
+        }
+        return;
+    }
 
             // Faza 2: Izbor ciljne celice
             if (board.selectedCellForMove != null &&
@@ -370,14 +374,15 @@ public class Cell : MonoBehaviour
     }
 
     public void ClearAllHighlights()
+{
+    Cell[] allCells = FindObjectsByType<Cell>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+    foreach (Cell cell in allCells)
     {
-        Cell[] allCells = FindObjectsByType<Cell>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-        foreach (Cell cell in allCells)
-        {
-            if (cell.buttonImage.transform.childCount > 0)
-                cell.buttonImage.transform.GetChild(0).gameObject.SetActive(false);
-        }
+        cell.buttonImage.color = Color.white;
+        if (cell.buttonImage.transform.childCount > 0)
+            cell.buttonImage.transform.GetChild(0).gameObject.SetActive(false);
     }
+}
 
     public void ClearHighlightsArtTer()
     {

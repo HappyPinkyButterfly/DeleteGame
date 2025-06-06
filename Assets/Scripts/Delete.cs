@@ -9,7 +9,7 @@ public class Delete : MonoBehaviour
 
     public Image deleteButtonImage { get; set; }
 
-    private bool isPlayerDown;
+    public bool isPlayerDown;
 
     public bool deleteUsed = false;
 
@@ -27,10 +27,10 @@ public class Delete : MonoBehaviour
         {
             deleteButtonImage.sprite = board.deleteOriginSymP2;
         }
+        deleteButtonImage.color = Color.white;
     }
     public void DeleteCell()
     {
-        Debug.Log(isPlayerDown + " | " + board.turnPlayer);
         if (
         !isPlayerDown == board.turnPlayer
         && board.connectionTable.Count == 0
@@ -43,7 +43,7 @@ public class Delete : MonoBehaviour
         {
             board.deleteProccess = true;
             deleteUsed = true;
-            deleteButtonImage.color = new Color(1, 1, 1, 0);
+            deleteButtonImage.color = Color.clear;
             HighlightEnemyBasicSymbols();
         }
     }

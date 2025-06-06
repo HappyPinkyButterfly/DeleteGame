@@ -48,12 +48,17 @@ public class Move : MonoBehaviour
             if (cell.state.symbolOwner == board.turnPlayer &&
                 (cell.state.occupation == 1 || cell.state.occupation == 2))
             {
-                return true;
+                // Preveri ali ima vsaj en veljaven premik
+                cell.FindPossibleMoves();
+                if (cell.moveTable.Count > 0)
+                {
+                    return true;
+                }
             }
         }
         return false;
     }
-    
+
     private void HighlightMovableSymbols()
     {
         Cell[] allCells = FindObjectsByType<Cell>(FindObjectsInactive.Include, FindObjectsSortMode.None);
@@ -62,12 +67,28 @@ public class Move : MonoBehaviour
             if (cell.state.symbolOwner == board.turnPlayer &&
                 (cell.state.occupation == 1 || cell.state.occupation == 2))
             {
-                cell.buttonImage.color = Color.cyan; // Use cyan for movable symbols
+                // Najprej poišči vse možne poteze za ta znak
+                cell.FindPossibleMoves();
+
+                // Označi samo če ima vsaj eno veljavno prazno celico
+                if (cell.moveTable.Count > 0)
+                {
+                    cell.buttonImage.color = Color.cyan;
+                }
+                else
+                {
+                    cell.buttonImage.color = Color.white;
+                }
             }
             else
             {
                 cell.buttonImage.color = Color.white;
             }
         }
+    }
+    public void ResetMove()
+    {
+        moveUsed = false;
+        moveButtonImage.color = Color.white;
     }
 }

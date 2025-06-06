@@ -72,4 +72,9 @@ public class ArtificialTerrain : MonoBehaviour
             }
         }
     }
+    public void ResetArtTer()
+    {
+        artTerUsed = false;
+        artTerButtonImage.color = Color.white;
+    }
 }

@@ -46,8 +46,8 @@ public class Heal : MonoBehaviour
             healUsed = true;
             healButtonImage.color = Color.clear;
             HighlightTerrainCells();
-            
-        
+
+
         }
     }
 
@@ -64,7 +64,7 @@ public class Heal : MonoBehaviour
         }
         return false;
     }
-    
+
     private void HighlightTerrainCells()
     {
         Cell[] allCells = FindObjectsByType<Cell>(FindObjectsInactive.Include, FindObjectsSortMode.None);
@@ -78,6 +78,11 @@ public class Heal : MonoBehaviour
                 cell.buttonImage.color = cellColor;
             }
         }
+    }
+    public void ResetHeal()
+    {
+        healUsed = false;
+        healButtonImage.color = Color.white;
     }
 
 
