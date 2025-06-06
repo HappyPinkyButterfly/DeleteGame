@@ -1691,6 +1691,8 @@ MonoBehaviour:
   healedCell: {fileID: -3082923099886209552, guid: 6ee98ded9ea959048b96dce5761646cf, type: 3}
   boardType: 0
   startStep: 0
+  topEndStep: {fileID: 1914803822}
+  botEndStep: {fileID: 970375135}
 --- !u!114 &217610211
 MonoBehaviour:
   m_ObjectHideFlags: 0
