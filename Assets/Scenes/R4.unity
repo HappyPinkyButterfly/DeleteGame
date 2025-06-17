@@ -163,12 +163,12 @@ VideoPlayer:
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
-  m_TargetTexture: {fileID: 8400000, guid: 52ed79b4ea8088b4aad8d646fe3a364f, type: 2}
+  m_TargetTexture: {fileID: 8400000, guid: 5feab81df0c133a4a9c4d1fc292447b7, type: 2}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 2
-  m_AspectRatio: 0
+  m_AspectRatio: 5
   m_DataSource: 0
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
@@ -179,7 +179,7 @@ VideoPlayer:
   - 1
   m_Url: 
   m_EnabledAudioTracks: 01
-  m_DirectAudioMutes: 00
+  m_DirectAudioMutes: 01
   m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 1
   m_SkipOnDrop: 1
@@ -995,8 +995,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -230, y: -2}
-  m_SizeDelta: {x: 670, y: 1500}
+  m_AnchoredPosition: {x: -260, y: 0}
+  m_SizeDelta: {x: 500, y: 1100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1889710888
 MonoBehaviour:
@@ -1018,7 +1018,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: 52ed79b4ea8088b4aad8d646fe3a364f, type: 2}
+  m_Texture: {fileID: 8400000, guid: 5feab81df0c133a4a9c4d1fc292447b7, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0

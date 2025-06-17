@@ -116,7 +116,7 @@ public class BotTurn : MonoBehaviour
         }
     }
 
-    private void ResetTimer()
+    public void ResetTimer()
     {
         // Calculate time based on victory points: 10s + 5s per point
         timeRemaining = baseTime + (score.victoryPoints * bonusPerPoint);
@@ -136,7 +136,7 @@ public class BotTurn : MonoBehaviour
         ResetTimer();
     }
     
-    private void SwitchTurn()
+    public void SwitchTurn()
     {
         if (board.artTerProcess || board.deleteProccess || board.healProccess || board.moveProccess)
         {

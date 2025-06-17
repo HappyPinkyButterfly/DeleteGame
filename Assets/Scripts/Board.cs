@@ -212,6 +212,7 @@ public class Board : MonoBehaviour
         cellsInUse = 0;
         SetSymbolsFromManager();
 
+
         bool firstSkipped = false;
 
         Move[] allMoves = FindObjectsByType<Move>(FindObjectsInactive.Include, FindObjectsSortMode.None);
@@ -267,6 +268,9 @@ public class Board : MonoBehaviour
 
         if (botScoreBoard != null)
             botScoreBoard.ResetPoints();
+
+        topTurn.ResetTimer();
+        botTurn.ResetTimer();
     }
 
     public bool EnemyHasNormalSymbol()
@@ -302,7 +306,14 @@ public class Board : MonoBehaviour
     {
         moveProccess = false;
         selectedCellForMove = null;
-        topTurn.SwitchTurn();
+        if (turnPlayer)
+            {
+                topTurn.SwitchTurn();
+            }
+            else
+            {
+                botTurn.SwitchTurn();
+            }
     }
 
     public void CancelDeleteProcess()

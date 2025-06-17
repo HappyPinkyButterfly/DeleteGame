@@ -37,7 +37,15 @@ public class Cell : MonoBehaviour
             this.state.occupation = 5;
             board.healProccess = false;
             board.cellsInUse--;
-            topTurn.SwitchTurn();
+            if (board.turnPlayer)
+            {
+                topTurn.SwitchTurn();
+            }
+            else
+            {
+                board.botTurn.SwitchTurn();
+            }
+            
             ResetTerrainAlpha();
             return;
         }
@@ -47,7 +55,14 @@ public class Cell : MonoBehaviour
             this.state.occupation = 4;
             board.artTerProcess = false;
             board.cellsInUse++;
-            topTurn.SwitchTurn();
+            if (board.turnPlayer)
+            {
+                topTurn.SwitchTurn();
+            }
+            else
+            {
+                board.botTurn.SwitchTurn();
+            }
             ClearHighlightsArtTer();
             return;
         }
@@ -67,6 +82,7 @@ public class Cell : MonoBehaviour
                 HighlightSelection();
             }
         }
+        
         return;
     }
 
@@ -78,6 +94,7 @@ public class Cell : MonoBehaviour
             {
                 MoveSymbolToThisCell();
                 board.ResetMoveProcess();
+                
             }
 
         }

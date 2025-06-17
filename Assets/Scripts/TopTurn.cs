@@ -110,7 +110,7 @@ public class TopTurn : MonoBehaviour
     }
 
 
-    private void ResetTimer()
+    public void ResetTimer()
     {
         // Calculate time based on victory points: 10s + 5s per point
         timeRemaining = baseTime + (score.victoryPoints * bonusPerPoint);
