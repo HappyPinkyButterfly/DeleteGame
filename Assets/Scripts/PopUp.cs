@@ -1,3 +1,4 @@
+using Unity.VisualScripting.ReorderableList.Element_Adder_Menu;
 using UnityEngine;
 
 public class PopUp : MonoBehaviour
@@ -21,14 +22,23 @@ public class PopUp : MonoBehaviour
 
     public void MainMenuClick()
     {
-        board.enabled = true;
-        popUp.alpha = 1f;
-        popUp.blocksRaycasts = true;
-        popUp.interactable = true;
+        if (board.menuButtonState)
+        {
+            board.enabled = true;
+            popUp.alpha = 1f;
+            popUp.blocksRaycasts = true;
+            popUp.interactable = true;
 
-        popUpBackGround.alpha = 1f;
-        popUpBackGround.blocksRaycasts = true;
-        popUpBackGround.interactable = true;
+            popUpBackGround.alpha = 1f;
+            popUpBackGround.blocksRaycasts = true;
+            popUpBackGround.interactable = true;
+        }
+        else
+        {
+            board.CancelAllProcesses();
+            board.MainMenuUndo("MainMenu");
+        }
+        
     }
 
     public void NoClick()

@@ -44,6 +44,7 @@ public class Delete : MonoBehaviour
             board.deleteProccess = true;
             deleteUsed = true;
             deleteButtonImage.color = Color.clear;
+            board.MainMenuUndo("Undo");
             HighlightEnemyBasicSymbols();
         }
     }

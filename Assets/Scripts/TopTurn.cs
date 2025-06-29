@@ -61,50 +61,50 @@ public class TopTurn : MonoBehaviour
             }
         }
 
-        if (board.boardType)
-        {
-            if (!board.turnPlayer)
-            {
-                timerVisible.alpha = 1;
-                if (isTimerRunning)
-                {
-                    timeRemaining -= Time.deltaTime;
+        // if (board.boardType)
+        // {
+        //     if (!board.turnPlayer)
+        //     {
+        //         timerVisible.alpha = 1;
+        //         if (isTimerRunning)
+        //         {
+        //             timeRemaining -= Time.deltaTime;
 
-                    // Only update display when integer second changes
-                    if (Mathf.FloorToInt(timeRemaining) != Mathf.FloorToInt(timeRemaining + Time.deltaTime))
-                    {
-                        UpdateTimerDisplay();
-                    }
+        //             // Only update display when integer second changes
+        //             if (Mathf.FloorToInt(timeRemaining) != Mathf.FloorToInt(timeRemaining + Time.deltaTime))
+        //             {
+        //                 UpdateTimerDisplay();
+        //             }
 
-                    if (timeRemaining <= 0)
-                    {
-                        // Time's up - switch turns
-                        isTimerRunning = false;
-                        if (!board.turnPlayer) // Only auto-switch if it's still this player's turn
-                        {
-                            SwitchTurn();
-                        }
-                    }
-                }
+        //             if (timeRemaining <= 0)
+        //             {
+        //                 // Time's up - switch turns
+        //                 isTimerRunning = false;
+        //                 if (!board.turnPlayer) // Only auto-switch if it's still this player's turn
+        //                 {
+        //                     SwitchTurn();
+        //                 }
+        //             }
+        //         }
 
-                // Switch turn when time reaches 0
-                if (timeRemaining <= 0)
-                {
-                    timeRemaining = 0;
-                    UpdateTimerDisplay();
-                    SwitchTurn();
-                }
+        //         // Switch turn when time reaches 0
+        //         if (timeRemaining <= 0)
+        //         {
+        //             timeRemaining = 0;
+        //             UpdateTimerDisplay();
+        //             SwitchTurn();
+        //         }
 
-            }
-            else
-            {
-                timerVisible.alpha = 0f;
-            }
-        }
-        else
-        {
-            timerVisible.alpha = 0f;
-        }
+        //     }
+        //     else
+        //     {
+        //         timerVisible.alpha = 0f;
+        //     }
+        // }
+        // else
+        // {
+        //     timerVisible.alpha = 0f;
+        // }
 
 
     }
@@ -120,7 +120,8 @@ public class TopTurn : MonoBehaviour
 
     private void UpdateTimerDisplay()
     {
-        timer.text = Mathf.CeilToInt(timeRemaining).ToString();
+        //timer.text = Mathf.CeilToInt(timeRemaining).ToString();
+        timer.text = "";
     }
 
 

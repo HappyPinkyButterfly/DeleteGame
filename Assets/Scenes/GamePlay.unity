@@ -3473,6 +3473,12 @@ MonoBehaviour:
   healedCell: {fileID: 0}
   boardType: 0
   startStep: 0
+  topEndStep: {fileID: 0}
+  botEndStep: {fileID: 0}
+  mainMenu: {fileID: 1752734919399983509, guid: 908d8ea6f00882e4e8753e31ab2f858c, type: 3}
+  undo: {fileID: -6062914999863570022, guid: 88bae52c1f7b2ee42933af0d6660adc1, type: 3}
+  menuUndo: {fileID: 1342268499}
+  menuButtonState: 0
 --- !u!1 &1780598247
 GameObject:
   m_ObjectHideFlags: 0

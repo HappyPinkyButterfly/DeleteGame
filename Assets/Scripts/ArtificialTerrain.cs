@@ -45,6 +45,7 @@ public class ArtificialTerrain : MonoBehaviour
             board.artTerProcess = true;
             artTerUsed = true;
             artTerButtonImage.color = Color.clear;
+            board.MainMenuUndo("Undo");
             HighlightEmptyCells();
         }
     }

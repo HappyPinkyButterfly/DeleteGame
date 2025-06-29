@@ -30,7 +30,7 @@ public class Cell : MonoBehaviour
 
     public void CellClick()
     {
-        if (board.healProccess && this.state.occupation == 3 && !board.startStep )
+        if (board.healProccess && this.state.occupation == 3 && !board.startStep)
         {
             buttonImage.sprite = board.healedCell;
             buttonImage.color = Color.white;
@@ -45,7 +45,7 @@ public class Cell : MonoBehaviour
             {
                 board.botTurn.SwitchTurn();
             }
-            
+            board.MainMenuUndo("MainMenu");
             ResetTerrainAlpha();
             return;
         }
@@ -63,28 +63,28 @@ public class Cell : MonoBehaviour
             {
                 board.botTurn.SwitchTurn();
             }
+            board.MainMenuUndo("MainMenu");
             ClearHighlightsArtTer();
             return;
         }
         else if (board.moveProccess && !board.startStep)
-{
-    if (board.selectedCellForMove == null)
-    {
-        if (this.state.symbolOwner == board.turnPlayer &&
-            (this.state.occupation == 1 || this.state.occupation == 2))
         {
-            // Najprej preveri ali ima ta znak vsaj en veljaven premik
-            FindPossibleMoves();
-            if (moveTable.Count > 0) // Samo če ima vsaj eno prazno celico
+            if (board.selectedCellForMove == null)
             {
-                ClearAllMoveHighlights();
-                board.selectedCellForMove = this;
-                HighlightSelection();
+                if (this.state.symbolOwner == board.turnPlayer &&
+                    (this.state.occupation == 1 || this.state.occupation == 2))
+                {
+                    // Najprej preveri ali ima ta znak vsaj en veljaven premik
+                    FindPossibleMoves();
+                    if (moveTable.Count > 0) // Samo če ima vsaj eno prazno celico
+                    {
+                        ClearAllMoveHighlights();
+                        board.selectedCellForMove = this;
+                        HighlightSelection();
+                    }
+                }
+                return;
             }
-        }
-        
-        return;
-    }
 
             // Faza 2: Izbor ciljne celice
             if (board.selectedCellForMove != null &&
@@ -94,7 +94,7 @@ public class Cell : MonoBehaviour
             {
                 MoveSymbolToThisCell();
                 board.ResetMoveProcess();
-                
+                board.MainMenuUndo("MainMenu");
             }
 
         }
@@ -208,15 +208,6 @@ public class Cell : MonoBehaviour
                 }
             }
         }
-        else if (state.occupation == 0 && board.deleteProccess && board.startStep)
-        {
-            // popravi problem kjer ce si kluknil na delete, pocakal malo, 
-            // kliknil prazno cell, pocakal malo in kliknil legal target,
-            //  se delete ni izbrisal
-            EventSystem.current.SetSelectedGameObject(null);
-            return;
-        }
-
         else if (state.occupation == 1 &&
                 board.turnPlayer != state.symbolOwner &&
                 board.connectionTable.Count == 0 &&
@@ -227,12 +218,10 @@ public class Cell : MonoBehaviour
             if (board.turnPlayer)
             {
                 buttonImage.sprite = board.originSymP1;
-                //board.botDelete.HideUsedDelete();
             }
             else
             {
                 buttonImage.sprite = board.originSymP2;
-                //board.upDelete.HideUsedDelete();
             }
             state.occupation = 2;
             if (!board.boardType)
@@ -247,6 +236,7 @@ public class Cell : MonoBehaviour
             state.symbolOwner = !state.symbolOwner;
             board.deleteProccess = false;
             ClearAllDeleteHighlights();
+            board.MainMenuUndo("MainMenu");
         }
     }
 

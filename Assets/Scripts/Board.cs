@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Board : MonoBehaviour
 {
@@ -73,6 +74,13 @@ public class Board : MonoBehaviour
     public bool startStep;
     public TopEndStep topEndStep;
     public BotEndStep botEndStep;
+
+    public Sprite mainMenu;
+    public Sprite undo;
+    public Image menuUndo;
+    public bool menuButtonState;
+
+
 
 
 
@@ -307,19 +315,19 @@ public class Board : MonoBehaviour
         moveProccess = false;
         selectedCellForMove = null;
         if (turnPlayer)
-            {
-                topTurn.SwitchTurn();
-            }
-            else
-            {
-                botTurn.SwitchTurn();
-            }
+        {
+            topTurn.SwitchTurn();
+        }
+        else
+        {
+            botTurn.SwitchTurn();
+        }
     }
 
     public void CancelDeleteProcess()
     {
         if (deleteProccess)
-        { 
+        {
             if (!turnPlayer)
             {
                 Delete[] allDeletes = upDelete.GetComponentsInChildren<Delete>();
@@ -344,9 +352,9 @@ public class Board : MonoBehaviour
                     }
                 }
             }
-        deleteProccess = false;
+            deleteProccess = false;
         }
-        
+
     }
     public void CancelMoveProcess()
     {
@@ -378,8 +386,8 @@ public class Board : MonoBehaviour
                     }
                 }
             }
-        moveProccess = false;
-        selectedCellForMove = null;
+            moveProccess = false;
+            selectedCellForMove = null;
         }
     }
 
@@ -423,43 +431,43 @@ public class Board : MonoBehaviour
                     }
                 }
             }
-            healProccess = false;    
+            healProccess = false;
         }
-        
+
     }
     public void CancelArtTerrProcess()
     {
         if (artTerProcess)
         {
             if (!turnPlayer)
-        {
-            ArtificialTerrain[] allArtTer = topEndStep.GetComponentsInChildren<ArtificialTerrain>();
-            foreach (ArtificialTerrain artTer in allArtTer)
             {
-                if (artTer.artTerUsed)
+                ArtificialTerrain[] allArtTer = topEndStep.GetComponentsInChildren<ArtificialTerrain>();
+                foreach (ArtificialTerrain artTer in allArtTer)
                 {
-                    artTer.artTerUsed = false;
-                    artTer.artTerButtonImage.color = Color.white;
-                    break;
+                    if (artTer.artTerUsed)
+                    {
+                        artTer.artTerUsed = false;
+                        artTer.artTerButtonImage.color = Color.white;
+                        break;
+                    }
                 }
             }
-        }
-        else
-        {
-            ArtificialTerrain[] allArtTer = botEndStep.GetComponentsInChildren<ArtificialTerrain>();
-            foreach (ArtificialTerrain artTer in allArtTer)
+            else
             {
-                if (artTer.artTerUsed)
+                ArtificialTerrain[] allArtTer = botEndStep.GetComponentsInChildren<ArtificialTerrain>();
+                foreach (ArtificialTerrain artTer in allArtTer)
                 {
-                    artTer.artTerUsed = false;
-                    artTer.artTerButtonImage.color = Color.white;
-                    break;
+                    if (artTer.artTerUsed)
+                    {
+                        artTer.artTerUsed = false;
+                        artTer.artTerButtonImage.color = Color.white;
+                        break;
+                    }
                 }
             }
+            artTerProcess = false;
         }
-        artTerProcess = false;    
-        }
-        
+
     }
 
     public void CancelAllProcesses()
@@ -473,7 +481,7 @@ public class Board : MonoBehaviour
         // Počistimo vse oznake
         CancelProcess();
     }
-    
+
     private void ResetActionButtons()
     {
         if (turnPlayer && moveProccess)
@@ -481,52 +489,65 @@ public class Board : MonoBehaviour
             Move[] allMoves = topEndStep.GetComponentsInChildren<Move>();
             foreach (Move move in allMoves)
             {
-                    if (move.isPlayerDown == !turnPlayer) // Samo za trenutnega igralca
-                    {
-                        move.moveUsed = false;
-                        move.moveButtonImage.color = Color.white;
-                        break;
-                    }
+                if (move.isPlayerDown == !turnPlayer) // Samo za trenutnega igralca
+                {
+                    move.moveUsed = false;
+                    move.moveButtonImage.color = Color.white;
+                    break;
+                }
             }
         }
-        
-        
+
+
         // Ponastavimo vse Delete gumbe
         Delete[] allDeletes = FindObjectsByType<Delete>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         foreach (Delete delete in allDeletes)
         {
-                if (delete.isPlayerDown == !turnPlayer) // Samo za trenutnega igralca
-                {
-                    delete.ResetDelete();
-                    break;
-                }
+            if (delete.isPlayerDown == !turnPlayer) // Samo za trenutnega igralca
+            {
+                delete.ResetDelete();
+                break;
+            }
         }
-        
+
         // Ponastavimo vse Heal gumbe
         Heal[] allHeals = FindObjectsByType<Heal>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         foreach (Heal heal in allHeals)
         {
-                if (heal.isPlayerDown == !turnPlayer) // Samo za trenutnega igralca
-                {
-                    heal.healUsed = false;
-                    heal.healButtonImage.color = Color.white;
-                    break;
-                }
+            if (heal.isPlayerDown == !turnPlayer) // Samo za trenutnega igralca
+            {
+                heal.healUsed = false;
+                heal.healButtonImage.color = Color.white;
+                break;
+            }
         }
-        
+
         // Ponastavimo vse ArtificialTerrain gumbe
         ArtificialTerrain[] allArtTers = FindObjectsByType<ArtificialTerrain>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         foreach (ArtificialTerrain artTer in allArtTers)
         {
-                if (artTer.isPlayerDown == !turnPlayer) // Samo za trenutnega igralca
-                {
-                    artTer.artTerUsed = false;
-                    artTer.artTerButtonImage.color = Color.white;
-                    break;
-                }
+            if (artTer.isPlayerDown == !turnPlayer) // Samo za trenutnega igralca
+            {
+                artTer.artTerUsed = false;
+                artTer.artTerButtonImage.color = Color.white;
+                break;
+            }
         }
     }
 
+    public void MainMenuUndo(string type)
+    {
+        if (type == "MainMenu")
+        {
+            menuUndo.sprite = mainMenu;
+            menuButtonState = true;
+        }
+        else
+        {
+            menuUndo.sprite = undo;
+            menuButtonState = false;
+        }
+    }
    
 }
 

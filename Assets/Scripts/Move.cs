@@ -35,7 +35,7 @@ public class Move : MonoBehaviour
             board.moveProccess = true;
             moveUsed = true;
             moveButtonImage.color = Color.clear;
-
+            board.MainMenuUndo("Undo");
             HighlightMovableSymbols();
         }
 
