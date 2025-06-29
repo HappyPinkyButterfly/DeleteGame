@@ -15,8 +15,8 @@ public class BotTurn : MonoBehaviour
     public BotScoreBoard score;
     public CanvasGroup timerVisible;
 
-    private float timeRemaining;
-    private bool isTimerRunning;
+    //private float timeRemaining;
+    //private bool isTimerRunning;
     private const int baseTime = 10; // Base 10 seconds
     private const int bonusPerPoint = 5; // 5 seconds per victory point
 
@@ -119,8 +119,8 @@ public class BotTurn : MonoBehaviour
     public void ResetTimer()
     {
         // Calculate time based on victory points: 10s + 5s per point
-        timeRemaining = baseTime + (score.victoryPoints * bonusPerPoint);
-        isTimerRunning = true;
+        //timeRemaining = baseTime + (score.victoryPoints * bonusPerPoint);
+        //isTimerRunning = true;
         UpdateTimerDisplay();
     }
 

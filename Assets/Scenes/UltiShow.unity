@@ -1468,6 +1468,10 @@ MonoBehaviour:
   startStep: 0
   topEndStep: {fileID: 1914803822}
   botEndStep: {fileID: 970375135}
+  mainMenu: {fileID: 1752734919399983509, guid: 908d8ea6f00882e4e8753e31ab2f858c, type: 3}
+  undo: {fileID: -6062914999863570022, guid: 88bae52c1f7b2ee42933af0d6660adc1, type: 3}
+  menuUndo: {fileID: 300270809}
+  menuButtonState: 0
 --- !u!114 &217610211
 MonoBehaviour:
   m_ObjectHideFlags: 0
