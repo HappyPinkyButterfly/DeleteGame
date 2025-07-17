@@ -1165,8 +1165,9 @@ MonoBehaviour:
     Symbol: Standard symbol that can be deleted by opponents\r\n\r\nOrigin Symbol:
     Upgraded version (appears larger/more prominent) that cannot be deleted\r\n\r\r\nEach
     player has:\r\n\r\nA score board (initially empty)\r\n\r\nA DeleteBoard positioned
-    above their score board\r\n\r\r\nThe current player is indicated by a green turn
-    marker\r\n\r\n\r\nWIN THE GAME by being the first to collect 5 victory points\n\n\n"
+    above their score board\r\n\r\r\nForm a line of 3 symbols by clicking on them
+    (horizontal, vertical, or diagonal) and claim them to score 1 Victory Point.\n\nWIN
+    THE GAME by being the first to collect 5 victory points\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1193,8 +1194,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 38
+  m_fontSizeBase: 38
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

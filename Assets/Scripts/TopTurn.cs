@@ -13,10 +13,6 @@ public class TopTurn : MonoBehaviour
     public Sprite greenButton;
     public Sprite yellowButton;
 
-
-
-
-
     private void Awake()
     {
         imageTopTurn = GetComponent<Image>();
