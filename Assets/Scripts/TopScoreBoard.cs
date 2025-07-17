@@ -3,15 +3,10 @@ using UnityEngine;
 
 public class TopScoreBoard : MonoBehaviour
 {
-
     private Point[] points;
-
     public Sprite vp;
-
     public int victoryPoints { get; set; }
-
     private void Awake()
-
     {
         points = GetComponentsInChildren<Point>();
         victoryPoints = 0;
@@ -19,7 +14,6 @@ public class TopScoreBoard : MonoBehaviour
 
     public void AddVictoryPointTop()
     {
-
         for (int i = 0; i <= victoryPoints; i++)
         {
             points[i].targetImage.sprite = vp;
@@ -37,8 +31,6 @@ public class TopScoreBoard : MonoBehaviour
             point.targetImage.color = Color.clear;
         }
     }
-
-
 }
 
 

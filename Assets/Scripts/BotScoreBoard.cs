@@ -2,16 +2,11 @@ using UnityEngine;
 
 public class BotScoreBoard : MonoBehaviour
 {
-
     private Point[] points;
-
     public Sprite vp;
-
-
     public int victoryPoints { get; set; }
 
     private void Awake()
-
     {
         points = GetComponentsInChildren<Point>();
         victoryPoints = 0;
@@ -19,7 +14,6 @@ public class BotScoreBoard : MonoBehaviour
 
     public void AddVictoryPointBot()
     {
-        
         for(int i = 0; i <= victoryPoints; i++)
         {
             points[i].targetImage.sprite = vp;

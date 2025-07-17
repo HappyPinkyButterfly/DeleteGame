@@ -2,15 +2,22 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
 
+/// <summary>
+/// Handles game state management including win conditions and game over screen
+/// </summary>
 public class Manager : MonoBehaviour
 {
-    public Board board;
-
+    [Header("Game Configuration")]
+    public int pointsToWin = 5;
+    [Header("UI References")]
+    public CanvasGroup gameOverScreen;
     public Image victoryImage;
 
-    public int pointsToWin = 5;
+    public Board board;
 
-    public CanvasGroup gameOverScreen;
+    
+
+    
     private void Start()
     {
         NewGame();
@@ -27,65 +34,66 @@ public class Manager : MonoBehaviour
 
     private void Update()
     {
-        if (board.topScoreBoard.victoryPoints == pointsToWin)
-            GameOver(true);
-        else if (board.botScoreBoard.victoryPoints == pointsToWin)
-            GameOver(false);
-        if(board.cellsInUse == 64)
+        CheckForGameEnd();
+    }
+    
+    private void CheckForGameEnd()
+    {
+        if (CheckVictoryByPoints() || CheckBoardFullCondition())
         {
-          if(board.botScoreBoard.victoryPoints < board.topScoreBoard.victoryPoints)
-          {
+            return;
+        }
+    }
+    
+
+    private bool CheckVictoryByPoints()
+    {
+        if (board.topScoreBoard.victoryPoints >= pointsToWin)
+        {
             GameOver(true);
-          }
-          else if(board.botScoreBoard.victoryPoints > board.topScoreBoard.victoryPoints)
-          {
-            GameOver(false);
-          }
-          else
-          {
-            board.enabled = false;
-            gameOverScreen.alpha = 1f;
-            gameOverScreen.interactable = true;
-            gameOverScreen.blocksRaycasts = true;
-            victoryImage.sprite = board.draw;
-          }
+            return true;
         }
 
+        if (board.botScoreBoard.victoryPoints >= pointsToWin)
+        {
+            GameOver(false);
+            return true;
+        }
+
+        return false;
     }
 
+    private bool CheckBoardFullCondition()
+    {
+        if (board.cellsInUse < 64) return false;
+
+        if (board.botScoreBoard.victoryPoints != board.topScoreBoard.victoryPoints)
+        {
+            GameOver(board.botScoreBoard.victoryPoints < board.topScoreBoard.victoryPoints);
+            return true;
+        }
+
+        HandleDraw();
+        return true;
+    }
+
+     private void HandleDraw()
+    {
+        board.enabled = false;
+        SetGameOverScreenVisibility(true);
+        victoryImage.sprite = board.draw;
+    }
+
+    private void SetGameOverScreenVisibility(bool show)
+    {
+        gameOverScreen.alpha = show ? 1f : 0f;
+        gameOverScreen.interactable = show;
+        gameOverScreen.blocksRaycasts = show;
+    }
     public void GameOver(bool player1Wins)
     {
         board.enabled = false;
-        gameOverScreen.alpha = 1f;
-        gameOverScreen.interactable = true;
-        gameOverScreen.blocksRaycasts = true;   
-        if(player1Wins)
-        {
-            victoryImage.sprite = board.originSymP2;
-        }
-        else
-        {
-            victoryImage.sprite = board.originSymP1;
-        }
-        //StartCoroutine(Fade(gameOverScreen,1f,1f));
-        
-    }
-
-    private IEnumerator Fade(CanvasGroup gameOverScreen, float to, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-
-        float elapsed = 0f;
-        float duration = 0.5f;
-        float from = gameOverScreen.alpha;
-
-        while (elapsed < duration)
-        {
-           gameOverScreen.alpha = Mathf.Lerp(from,to,elapsed/duration);
-           elapsed += Time.deltaTime;
-           yield return null;
-        }
-        
-        gameOverScreen.alpha = to;
+        SetGameOverScreenVisibility(true);
+        victoryImage.sprite = player1Wins ? board.originSymP2 : board.originSymP1;
     }
 }

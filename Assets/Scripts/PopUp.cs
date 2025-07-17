@@ -2,53 +2,68 @@ using UnityEngine;
 
 public class PopUp : MonoBehaviour
 {
-
+    // Originalne spremenljivke (ohranjene)
     public Board board;
     public CanvasGroup popUp;
-
     public CanvasGroup popUpBackGround;
 
-    public void Awake()
+    private void Awake()
     {
-        popUp.alpha = 0f;
-        popUp.blocksRaycasts = false;
-        popUp.interactable = false;
+        HidePopUp();
+    }
 
-        popUpBackGround.alpha = 0f;
-        popUpBackGround.blocksRaycasts = false;
-        popUpBackGround.interactable = false;
+    private void HidePopUp()
+    {
+        SetPopUpVisibility(false);
+        SetBackgroundVisibility(false);
+    }
+    private void ShowPopUp()
+    {
+        SetPopUpVisibility(true);
+        SetBackgroundVisibility(true);
+    }
+
+    private void SetPopUpVisibility(bool show)
+    {
+        popUp.alpha = show ? 1f : 0f;
+        popUp.blocksRaycasts = show;
+        popUp.interactable = show;
+    }
+
+    private void SetBackgroundVisibility(bool show)
+    {
+        popUpBackGround.alpha = show ? 1f : 0f;
+        popUpBackGround.blocksRaycasts = show;
+        popUpBackGround.interactable = show;
     }
 
     public void MainMenuClick()
     {
         if (board.menuButtonState)
         {
-            board.enabled = true;
-            popUp.alpha = 1f;
-            popUp.blocksRaycasts = true;
-            popUp.interactable = true;
-
-            popUpBackGround.alpha = 1f;
-            popUpBackGround.blocksRaycasts = true;
-            popUpBackGround.interactable = true;
+            ShowMainMenu();
         }
         else
         {
-            board.CancelAllProcesses();
-            board.MainMenuUndo("MainMenu");
+            HideMainMenu();
         }
-        
+    }
+
+    private void ShowMainMenu()
+    {
+        board.enabled = true;
+        ShowPopUp();
+    }
+
+    private void HideMainMenu()
+    {
+        board.CancelAllProcesses();
+        board.MainMenuUndo("MainMenu");
     }
 
     public void NoClick()
     {
         board.enabled = false;
-        popUp.alpha = 0f;
-        popUp.blocksRaycasts = false;
-        popUp.interactable = false;
-
-        popUpBackGround.alpha = 0f;
-        popUpBackGround.blocksRaycasts = false;
-        popUpBackGround.interactable = false;
+        HidePopUp();
     }
 }

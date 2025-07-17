@@ -7,7 +7,5 @@ public class Point : MonoBehaviour
     public void Awake()
     {
         targetImage = GetComponent<Image>();
-        ColorUtility.TryParseHtmlString("#DBC8AA", out Color novaBarva);
-        targetImage.color = novaBarva;
     }
 }
