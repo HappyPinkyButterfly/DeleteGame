@@ -32,9 +32,17 @@ DELETE takes the simplicity of Tic-Tac-Toe and launches it into a new dimension 
 
 ## 📷 Preview
 
-![Gameplay Preview](./Screenshots/delete-preview.gif)
+### 🔹 Main menu And Skins
+![MainMenu](ShowcaseMedia/MainMenu.gif)
 
----
+### 🔹 Place, Delete, Connect
+![PlaceDeleteConnect](ShowcaseMedia/PlaceDeleteConnect.gif)
+
+### 🔹 Premik figure
+![MoveAction](ShowcaseMedia/MoveAction.gif)
+
+### 🔹 Umetni teren in heal
+![ArtificialTerrainAndHeal](ShowcaseMedia/ArtificialTerrainAndHeal.gif)
 
 ## 🛠️ Tech Stack
 
