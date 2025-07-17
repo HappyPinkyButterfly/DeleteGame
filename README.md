@@ -1,32 +1,63 @@
-# 🔥 DELETE – The Ultimate Tic-Tac-Toe Showdown! 🔥
+# DELETE – The Ultimate Tic-Tac-Toe Showdown!
 
-**Think you've mastered Tic-Tac-Toe? Think again!**
+**Strategic. Brutal. Addictive.**
 
-Dive into *Delete*, where classic strategy meets intense, mind-blowing tactics! Battle on a dynamic 8×8 grid, outsmarting your opponent with devious deletions, unstoppable Origin Symbols, and high-stakes connections.
+DELETE takes the simplicity of Tic-Tac-Toe and launches it into a new dimension of **chess-like tactics**, deletion mechanics, new actions and evolving terrain.
 
-**Will you dominate—or get deleted?**
+---
 
-## 🎯 Key Features
+## Game Overview
 
-✔ **Strategic Symbol Placement** – Claim empty spaces with Basic Symbols, setting up future plays  
-✔ **Delete & Convert** – Turn opponent's symbols into your indestructible Origin Symbols (*only 5 Deletes per game!*)  
-✔ **Claim Connections** – Form a line of 3? Spend a turn to lock it in for 1 Victory Point and create impassable terrain!  
-✔ **Evolving Battlefield** – The board transforms with every claimed connection  
-✔ **No Cheap Wins** – Opponents can block or disrupt before you score  
+- **Board:** 8×8 grid
+- **Victory:** First to 5 points
+- **Actions per turn:**
+  - 🟢 *Place*: basic symbol
+  - ❌ *Delete*: replace enemy symbol with your Origin 
+  - 🔗 *Connect*: lock 3-in-a-row to score and transform cells into terrain
+  - More special moves available in other gamemodes
 
-## 🚀 How to Play
+---
 
-1. **PLACE** – Mark empty territory with basic symbols  
-2. **DELETE** – Remove an enemy's symbol and replace it with your Origin Symbol  
-3. **CONNECT** – Secure your 3-in-a-row to score points and alter the board  
+##  Key Mechanics
 
-## 🏁 Game End
+| Mechanic        | Description |
+|-----------------|-------------|
+| 🧠 Strategic Depth | Choose between placing, deleting, or connecting |
+| 🔒 Origin Symbols | Cannot be deleted – protect your core |
+| ⚠️ Deletes | Disrupt your opponent strategies |
+| 🧱 Terrain | Claimed lines become impassable |
+| 🔁 Replayability | Every match plays out differently |
 
-- **First to 5 Victory Points wins!**  
-- If board fills up, highest score takes the crown  
+---
 
-## 🏆 Prove You're the Ultimate Strategist!
+## 📷 Preview
 
-📲 **Download now!**  
+![Gameplay Preview](./Screenshots/delete-preview.gif)
 
-*Perfect for fans of Chess, Gomoku, and strategic mind games!*
+---
+
+## 🛠️ Tech Stack
+
+- **Engine:** Unity
+- **Language:** C#
+- **Patterns:** Clean architecture, modular scripts
+- **Tools:** Unity Animator, Coroutines, Git
+
+---
+
+## 💡 What I learned
+
+- Writing scalable and readable C# code
+- Designing engaging game mechanics from scratch
+- UI/UX and player feedback design
+- Managing game state and turn systems
+- Working solo from concept to App Store publication
+
+---
+
+## 📱 Download
+
+> Available on App Store: [DELETE – Tactical Game](https://apps.apple.com/si/app/deletelite/id6747510701)
+
+---
+
