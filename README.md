@@ -38,10 +38,10 @@ DELETE takes the simplicity of Tic-Tac-Toe and launches it into a new dimension 
 ### 🔹 Place, Delete, Connect
 ![PlaceDeleteConnect](ShowcaseMedia/PlaceDeleteConenct.gif)
 
-### 🔹 Premik figure
+### 🔹 MOVE Action
 ![MoveAction](ShowcaseMedia/MoveAction.gif)
 
-### 🔹 Umetni teren in heal
+### 🔹 Artificial Terrain And Heal Action
 ![ArtificialTerrainAndHeal](ShowcaseMedia/ArtificialTerrainAndHeal.gif)
 
 ## 🛠️ Tech Stack
