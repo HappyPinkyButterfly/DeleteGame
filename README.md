@@ -36,7 +36,7 @@ DELETE takes the simplicity of Tic-Tac-Toe and launches it into a new dimension 
 ![MainMenu](ShowcaseMedia/MainMenu.gif)
 
 ### 🔹 Place, Delete, Connect
-![PlaceDeleteConnect](ShowcaseMedia/PlaceDeleteConnect.gif)
+![PlaceDeleteConnect](ShowcaseMedia/PlaceDeleteConect.gif)
 
 ### 🔹 Premik figure
 ![MoveAction](ShowcaseMedia/MoveAction.gif)
